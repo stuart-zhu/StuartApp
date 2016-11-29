@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/btn_yao_yao_con"
+        android:layout_height="wrap_content"
+        android:paddingRight="16dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:onClick="goGo"
+            android:id="@+id/btn_yao_yao"
+            android:text="摇一摇"/>
+
+        <Button
+            android:layout_toRightOf="@+id/btn_yao_yao"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:onClick="goGo"
+            android:id="@+id/btn_hisotry"
+            android:text="往期"
+            />
+
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/same_count_et"
+            android:inputType="number"
+            android:textSize="13sp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="4"
+            android:hint="重复次数"/>
+
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/red_ball_lv"
+        android:layout_below="@+id/btn_yao_yao_con"
+        android:layout_width="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:numColumns="8"
+        android:layout_height="wrap_content"/>
+
+
+    <View android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/red_ball_lv"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#222"/>
+
+
+    <GridView
+        android:id="@+id/blue_ball_lv"
+        android:layout_below="@+id/divider"
+        android:layout_width="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:numColumns="8"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

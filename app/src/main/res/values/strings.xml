@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">StuartApp</string>
+
+    <string name="ssq_number">第%s期</string>
+
+    <string name="ssq_recommend">每期推荐</string>
+
+    <string name="ssq_recommending">推荐中...</string>
+</resources>
