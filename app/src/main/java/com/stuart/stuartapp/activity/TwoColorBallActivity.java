@@ -7,26 +7,22 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.nfc.cardemulation.HostNfcFService;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.stuart.stuartapp.BaseActivity;
 import com.stuart.stuartapp.R;
-import com.stuart.stuartapp.entity.SSQ;
 import com.stuart.stuartapp.utils.JxUtils;
 import com.stuart.stuartapp.utils.ToastUtil;
 import com.stuart.stuartapp.widget.TwoColorBall;
@@ -34,7 +30,6 @@ import com.stuart.stuartapp.widget.TwoColorBall;
 import java.util.List;
 
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -114,7 +109,7 @@ public class TwoColorBallActivity extends BaseActivity {
     private void startGet() {
         String text = etCount.getText().toString();
         if (TextUtils.isEmpty(text)) {
-            ToastUtil.getInstance(this ).show("说个数呀！");
+            ToastUtil.getInstance(this).show("说个数呀！");
             return;
         }
         etCount.setText("");
@@ -171,7 +166,7 @@ public class TwoColorBallActivity extends BaseActivity {
                     startGet();
                     break;
                 case MESSAGE_SHOW_PROGRESS:
-                    mProgress = new ProgressDialog(TwoColorBallActivity. this, ProgressDialog.STYLE_SPINNER);
+                    mProgress = new ProgressDialog(TwoColorBallActivity.this, ProgressDialog.STYLE_SPINNER);
                     mProgress.setMessage("稍等");
                     mProgress.show();
                     break;
@@ -181,6 +176,7 @@ public class TwoColorBallActivity extends BaseActivity {
             }
         }
     };
+
     private class BallAdapter extends BaseAdapter {
 
         public static final int TYPE_BALL_RED = 1;
@@ -221,8 +217,8 @@ public class TwoColorBallActivity extends BaseActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-             if (convertView == null) {
-            convertView = mInflator.inflate(R.layout.two_color_ball_item, null);
+            if (convertView == null) {
+                convertView = mInflator.inflate(R.layout.two_color_ball_item, null);
             }
 
             final TwoColorBall tcb = (TwoColorBall) convertView;
@@ -254,34 +250,18 @@ public class TwoColorBallActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
 
-                        if (tcb.isChecked()) {
-                            tcb.setChecked(false);
-                        } else {
-                            tcb.setChecked(true);
-                        }
+                    if (tcb.isChecked()) {
+                        tcb.setChecked(false);
+                    } else {
+                        tcb.setChecked(true);
+                    }
 
                 }
             });
             return convertView;
         }
     }
-
-    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            if (view instanceof TwoColorBall) {
-                TwoColorBall v = (TwoColorBall) view;
-                if (v.isChecked()) {
-                    v.setChecked(false);
-                } else {
-                    v.setChecked(true);
-                }
-            }
-
-        }
-    };
-
-
+    
     private SensorManager sensorManager;
     private Sensor sensor;
     private Vibrator vibrator;
@@ -293,7 +273,6 @@ public class TwoColorBallActivity extends BaseActivity {
     private float lastZ;
 
     private SensorEventListener sensorEventListener = new SensorEventListener() {
-
 
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -332,5 +311,13 @@ public class TwoColorBallActivity extends BaseActivity {
         }
     };
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

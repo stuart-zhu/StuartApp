@@ -11,14 +11,12 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
+
 import com.stuart.stuartapp.BaseActivity;
 import com.stuart.stuartapp.R;
 import com.stuart.stuartapp.dao.SsqDao;
 import com.stuart.stuartapp.entity.SSQ;
-import com.stuart.stuartapp.spec.SsqMap;
+
 import com.stuart.stuartapp.utils.LogUtil;
 import com.stuart.stuartapp.utils.ViewUtil;
 import com.stuart.stuartapp.widget.TwoColorBall;

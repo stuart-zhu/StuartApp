@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/two_color_ball"
+            android:title="@string/two_color_bell"
+            android:icon="@mipmap/left_icon_two_color_ball"/>
+
+        <item
+            android:title="@string/menu_2"
+            android:icon="@mipmap/left_icon_menu"/>
+    </group>
+
+    <item android:title="@string/activity_main_left_one">
+
+        <menu>
+            <item
+                android:title="@string/menu_3"
+                android:icon="@mipmap/left_icon_menu"/>
+
+            <item
+                android:title="@string/menu_4"
+                android:icon="@mipmap/left_icon_menu"/>
+
+        </menu>
+    </item>
+</menu>

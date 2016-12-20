@@ -2,8 +2,13 @@ package com.stuart.stuartapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 
+import com.stuart.stuartapp.activity.DemoActivity;
 import com.stuart.stuartapp.activity.TwoColorBallActivity;
 import com.stuart.stuartapp.callback.GetSSQListener;
 import com.stuart.stuartapp.dao.SsqDao;
@@ -48,6 +53,19 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        NavigationView mNaviagionView = (NavigationView)findViewById(R.id.navigation_view);
+        mNaviagionView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.two_color_ball:
+                        startActivity(new Intent(MainActivity.this, TwoColorBallActivity.class));
+                        break;
+                }
+                return true;
+            }
+        });
+
 
         /*Intent localePicker = new Intent();
         localePicker.setClassName("com.android.provision","com.android.provision.LocaleSettingsActivity");
@@ -56,11 +74,23 @@ public class MainActivity extends BaseActivity {
         startActivity(localePicker);*/
     }
 
-    public void toClick(View v) {
-        switch (v.getId()) {
-            case R.id.two_color_ball:
-                startActivity(new Intent(this, TwoColorBallActivity.class));
-                break;
+    private long t1;
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+            if (t1 == 0) {
+                t1 = System.currentTimeMillis();
+            return super.onTouchEvent(event);
+            }
+            if (t1 >0 && System.currentTimeMillis() - t1 < 1000) {
+                t1 = 0;
+                startActivity(new Intent("demo"));
+                return super.onTouchEvent(event);
+            }
+            t1 = 0;
+
         }
+        return super.onTouchEvent(event);
     }
 }

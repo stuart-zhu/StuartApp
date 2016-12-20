@@ -5,5 +5,19 @@
 
     <string name="ssq_recommend">每期推荐</string>
 
+    <string name="demo_test_recycler">测试Recycler</string>
+    <string name="demo_test_sample">测试sample</string>
     <string name="ssq_recommending">推荐中...</string>
+    <string name="add_contact">添加联系人</string>
+    <string name="sumbit">提交</string>
+    <string name="app_description">Android drawer icon with material design animation</string>
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+    <string name="activity_main_left_one">第二组</string>
+    <string name="menu_1">menu1</string>
+    <string name="menu_2">menu2</string>
+    <string name="menu_3">menu3</string>
+    <string name="menu_4">menu4</string>
+
+    <string name="two_color_bell">双色球</string>
 </resources>
