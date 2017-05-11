@@ -16,6 +16,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -50,7 +52,7 @@ public class WeatherActivity extends FragmentActivity {
 
     private static final int REQUEST_ADD_CITY = 12;
 
-    private class WeatherFragmentPage extends FragmentPagerAdapter {
+    private class WeatherFragmentPage extends FragmentStatePagerAdapter {
         public WeatherFragmentPage(FragmentManager fm) {
             super(fm);
         }
@@ -65,7 +67,10 @@ public class WeatherActivity extends FragmentActivity {
             return mFragments.size();
         }
 
-
+        @Override
+        public int getItemPosition(Object object) {
+            return PagerAdapter.POSITION_NONE;
+        }
     }
 
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -148,12 +153,16 @@ public class WeatherActivity extends FragmentActivity {
                             .setTitle(getString(R.string.sure_to_del, (String) mShowingFragment.getArguments().get("city"))).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                          /*  removeIndicator();
+                            removeIndicator();
                             Contants.removeCityList(WeatherActivity.this, (String)mShowingFragment.getArguments().get("city"));
+
+
+                            // getSupportFragmentManager().beginTransaction().remove(mShowingFragment).commit();
                             mFragments.remove(mShowingFragment);
-                            getSupportFragmentManager().beginTransaction().remove(mShowingFragment).commit();
-                            //getSupportFragmentManager().beginTransaction().show(mFragments.get(1)).commit();
-                            mFragmentPage.notifyDataSetChanged();*/
+
+                            mFragmentPage.notifyDataSetChanged();
+                            //vp.setCurrentItem(i == mFragments.size() ? i -1 : i+1);
+
                         }
                     }).setNeutralButton(android.R.string.cancel, null).
                             show();
@@ -209,11 +218,11 @@ public class WeatherActivity extends FragmentActivity {
                 return;
             }
             Location location = locationManager.getLastKnownLocation(provider);
-            if (location != null) {
+            /*if (location != null) {
                 getLocation(location);//得到当前经纬度并开启线程去反向地理编码
             } else {
                 Toast.makeText(this, "暂时无法获得当前位置", Toast.LENGTH_SHORT).show();
-            }
+            }*/
         } else {//不存在位置提供器的情况
 
         }
@@ -227,7 +236,7 @@ public class WeatherActivity extends FragmentActivity {
         }
 
         for (String s : cityList) {
-            chooseCity(s);
+            chooseCity(s, false);
         }
     }
 
@@ -265,7 +274,7 @@ public class WeatherActivity extends FragmentActivity {
         if (requestCode == REQUEST_ADD_CITY && resultCode == RESULT_OK) {
             String city = data.getStringExtra("city");
             Contants.addCityList(this, city);
-            chooseCity(city);
+            chooseCity(city, true);
         }
     }
 
@@ -289,7 +298,7 @@ public class WeatherActivity extends FragmentActivity {
                             JSONObject j = result.getJSONObject("addressComponent");
 
                             String district = j.getString("district");
-                            chooseCity(district);
+                            chooseCity(district, true);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -306,8 +315,8 @@ public class WeatherActivity extends FragmentActivity {
         }.execute(url);
     }
 
-    private void chooseCity(String city) {
-        mHandler.obtainMessage(MSG_ADD_WEATHER_PAGE, city).sendToTarget();
+    private void chooseCity(String city, boolean select) {
+        mHandler.obtainMessage(MSG_ADD_WEATHER_PAGE, select ? 1 : 0, 1,city).sendToTarget();
     }
 
     private static final int MSG_ADD_WEATHER_PAGE = 1;
@@ -328,6 +337,9 @@ public class WeatherActivity extends FragmentActivity {
                     }
                     addIndicator();
                     mFragmentPage.notifyDataSetChanged();
+                    if (msg.arg1 == 1) {
+                        vp.setCurrentItem(mFragments.size() -1);
+                    }
 
                     break;
                 case MSG_ADD_WEATHER_CITY:
