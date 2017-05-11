@@ -103,6 +103,7 @@ public class DemoActivity extends BaseActivity {
                             break;
                         case R.string.demo_test_sample:
                             intent = new Intent(DemoActivity.this, SampleActivity.class);
+                            break;
                         case R.string.weather:
                             intent = new Intent("com.stuart.weather");
                             break;
