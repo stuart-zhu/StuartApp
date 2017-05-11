@@ -38,3 +38,8 @@
 
     #保护注解
     -keepattributes *Annotation*
+
+
+    -keep class com.baidu.android.**{*;}
+    -keep class com.baidu.voicerecognition.android.**{*;}
+    -keep class com.turing.androidsdk.**{*;}

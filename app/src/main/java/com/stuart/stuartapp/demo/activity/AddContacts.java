@@ -50,6 +50,7 @@ public class AddContacts extends BaseActivity implements View.OnClickListener{
                     final int i = msg.arg1;
                     new Thread() {
                         public void run() {
+//                            String [] names =
                             for (int a = 0; a < i; a++) {
                                 int x = new Random().nextInt(3) + 1;
                                 StringBuffer sb = new StringBuffer();

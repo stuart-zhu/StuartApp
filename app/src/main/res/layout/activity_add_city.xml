@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.stuart.stuartapp.widget.ClearEditText
+        android:layout_marginTop="10dp"
+        android:id="@+id/filter_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/search_view_bg"
+        android:drawableLeft="@drawable/search_view_icon"
+        android:drawablePadding="5dp"
+        android:hint="@string/search_view_hint"
+        android:paddingBottom="4dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="4dp"
+        android:maxLines="1"
+        android:textSize="13sp" />
+
+    <ListView
+        android:id="@+id/lv"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:text="@string/none_city"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_height="match_parent" />
+</LinearLayout>

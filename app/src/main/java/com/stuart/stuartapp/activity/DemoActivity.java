@@ -42,6 +42,7 @@ public class DemoActivity extends BaseActivity {
         mAdapter = new DemoAdapter(this, prepareData());
         mListView.setAdapter(mAdapter);
 
+
     }
 
     private List<Integer> prepareData() {
@@ -49,6 +50,7 @@ public class DemoActivity extends BaseActivity {
         list.add(R.string.add_contact);
         list.add(R.string.demo_test_recycler);
         list.add(R.string.demo_test_sample);
+        list.add(R.string.weather);
         return list;
     }
 
@@ -91,17 +93,25 @@ public class DemoActivity extends BaseActivity {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent intent = null;
                     switch (getItem(position)) {
                         case R.string.add_contact:
-                            startActivity(new Intent(DemoActivity.this, AddContacts.class));
+                            intent = new Intent(DemoActivity.this, AddContacts.class);
                             break;
                         case R.string.demo_test_recycler:
-                            startActivity(new Intent("testRecycler"));
+                            intent = new Intent("testRecycler");
                             break;
                         case R.string.demo_test_sample:
-                            startActivity(new Intent(DemoActivity.this, SampleActivity.class));
+                            intent = new Intent(DemoActivity.this, SampleActivity.class);
+                        case R.string.weather:
+                            intent = new Intent("com.stuart.weather");
+                            break;
+                        default:
                             break;
 
+                    }
+                    if (intent != null) {
+                        startActivity(intent);
                     }
                 }
             });

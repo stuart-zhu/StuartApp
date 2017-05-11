@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
 
-import com.stuart.stuartapp.activity.DemoActivity;
 import com.stuart.stuartapp.activity.TwoColorBallActivity;
 import com.stuart.stuartapp.callback.GetSSQListener;
 import com.stuart.stuartapp.dao.SsqDao;
@@ -26,10 +25,41 @@ public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
 
+    private DrawerLayout mDrawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*TelephonyManager mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        int simState = mTelephonyManager.getSimState();
+        String hintMessage = "";
+        switch (simState) {
+            case TelephonyManager.SIM_STATE_UNKNOWN:
+                hintMessage = "Unknown";
+                break;
+            case TelephonyManager.SIM_STATE_ABSENT:
+                hintMessage = "no SIM card is available in the device";
+                break;
+            case TelephonyManager.SIM_STATE_PIN_REQUIRED:
+                hintMessage = "Locked: requires the user's SIM PIN to unlock";
+                break;
+            case TelephonyManager.SIM_STATE_PUK_REQUIRED:
+                hintMessage = "Locked: requires the user's SIM PUK to unlock ";
+                break;
+            case TelephonyManager.SIM_STATE_NETWORK_LOCKED:
+                hintMessage = "Locked: requries a network PIN to unlock";
+                break;
+            case TelephonyManager.SIM_STATE_READY:
+                hintMessage = "Ready";
+                break;
+            default:
+                break;
+        }
+
+        ToastUtil.getInstance(this).show(hintMessage);
+        */
 
         DataUtils.getSsq(50, new GetSSQListener() {
             @Override
@@ -53,7 +83,9 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        NavigationView mNaviagionView = (NavigationView)findViewById(R.id.navigation_view);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        final NavigationView mNaviagionView = (NavigationView) findViewById(R.id.navigation_view);
         mNaviagionView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -61,7 +93,11 @@ public class MainActivity extends BaseActivity {
                     case R.id.two_color_ball:
                         startActivity(new Intent(MainActivity.this, TwoColorBallActivity.class));
                         break;
+                    case R.id.demo:
+                        startActivity(new Intent("demo"));
+                        break;
                 }
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
         });
@@ -74,23 +110,5 @@ public class MainActivity extends BaseActivity {
         startActivity(localePicker);*/
     }
 
-    private long t1;
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
-            if (t1 == 0) {
-                t1 = System.currentTimeMillis();
-            return super.onTouchEvent(event);
-            }
-            if (t1 >0 && System.currentTimeMillis() - t1 < 1000) {
-                t1 = 0;
-                startActivity(new Intent("demo"));
-                return super.onTouchEvent(event);
-            }
-            t1 = 0;
-
-        }
-        return super.onTouchEvent(event);
-    }
 }

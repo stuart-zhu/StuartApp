@@ -9,8 +9,9 @@
             android:icon="@mipmap/left_icon_two_color_ball"/>
 
         <item
-            android:title="@string/menu_2"
-            android:icon="@mipmap/left_icon_menu"/>
+            android:id="@+id/demo"
+            android:title="@string/demo"
+            android:icon="@mipmap/left_icon_demo"/>
     </group>
 
     <item android:title="@string/activity_main_left_one">

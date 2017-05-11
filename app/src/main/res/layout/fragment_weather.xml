@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/sc"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/viewSign"
+            android:layout_width="1px"
+            android:layout_height="1px"/>
+
+
+        <RelativeLayout
+            android:id="@+id/top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/city"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textSize="80sp" />
+
+            <LinearLayout
+                android:id="@+id/weather_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/temp"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" />
+
+                <ImageView
+                    android:id="@+id/ic_weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/weather"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@+id/temp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/temp_round"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/weather_container"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp" />
+
+
+            <LinearLayout
+                android:id="@+id/aqi_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/temp_round"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/aqi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text=" · "
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/quality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/level"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:id="@+id/line"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/aqi_info"
+                android:background="#FF0000FF"/>
+
+            <com.stuart.stuartapp.weather.widget.TrendGraph
+                android:layout_below="@+id/line"
+                android:id="@+id/trend"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                ></com.stuart.stuartapp.weather.widget.TrendGraph>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:id="@+id/line2"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/trend"
+                android:background="#FF0000FF"/>
+
+        </RelativeLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:id="@+id/daily_lv"
+            android:divider="@null"
+            android:layout_below="@+id/top"
+            android:layout_height="wrap_content"></ListView>
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:id="@+id/index_lv"
+            android:divider="@null"
+            android:layout_below="@+id/daily_lv"
+            android:layout_height="wrap_content"></ListView>
+    </RelativeLayout>
+
+
+</ScrollView>
+

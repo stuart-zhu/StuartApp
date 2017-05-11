@@ -20,7 +20,7 @@ public class StuartDb extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_SSQ = "" +
             "CREATE TABLE ssq ("
-            +"_id INTEGER PRIMARY KEY, "
+            +"_id INTEGER PRIMARY KEY AUTOINCREMENT, "
             +"expect TEXT unique,"
             +"red TEXT,"
             +"blue TEXT,"
