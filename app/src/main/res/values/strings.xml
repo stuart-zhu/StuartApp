@@ -76,4 +76,6 @@
     <string name="city_is_not_ok">正在整理城市信息，请稍后！</string>
     <string name="no_city_del">只有一个城市时不可删除</string>
     <string name="sure_to_del">确认删除%s的天气信息？</string>
+    <string name="title_activity_kotlin">KotlinActivity</string>
+    <string name="kotlin">kotlin</string>
 </resources>

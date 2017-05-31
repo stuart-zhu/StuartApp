@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#F00</color>
-    <color name="colorPrimaryDark">#E00</color>
+    <color name="colorPrimary">#9ec8e3</color>
+    <color name="colorPrimaryDark">#7fbbe2</color>
     <color name="colorAccent">#CBD</color>
     <color name="ldrawer_color">#ffffff</color>
     <color name="drawer_arrow_second_color">#303f9f</color>

@@ -18,7 +18,8 @@
 
         <menu>
             <item
-                android:title="@string/menu_3"
+                android:id="@+id/kotlin"
+                android:title="@string/kotlin"
                 android:icon="@mipmap/left_icon_menu"/>
 
             <item

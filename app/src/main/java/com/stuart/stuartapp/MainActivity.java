@@ -96,6 +96,9 @@ public class MainActivity extends BaseActivity {
                     case R.id.demo:
                         startActivity(new Intent("demo"));
                         break;
+                    case R.id.kotlin:
+                        startActivity(new Intent("kotlin"));
+                        break;
                 }
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
