@@ -1,23 +1,22 @@
 package com.stuart.stuartapp.activity;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-
 
 import com.stuart.stuartapp.BaseActivity;
 import com.stuart.stuartapp.R;
 import com.stuart.stuartapp.dao.SsqDao;
 import com.stuart.stuartapp.entity.SSQ;
-
 import com.stuart.stuartapp.utils.LogUtil;
+import com.stuart.stuartapp.utils.MyDecoration;
 import com.stuart.stuartapp.utils.ViewUtil;
 import com.stuart.stuartapp.widget.TwoColorBall;
 
@@ -25,7 +24,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,12 +36,11 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by lenovo on 2016/11/14.
+ * Created by stuart on 2016/11/14.
  */
 public class SSQHistoryActivity extends BaseActivity {
 
     private static final String TAG = "SSQHistoryActivity";
-    private ListView lv;
 
     private SSQHistoryAdapter mAdapter;
 
@@ -51,17 +48,21 @@ public class SSQHistoryActivity extends BaseActivity {
 
     private TextView tvRecommendTitle, tvRecommend;
 
+    private RecyclerView lv;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ssq_hisotry);
-        lv = (ListView) findViewById(R.id.lv);
+        lv = (RecyclerView) findViewById(R.id.lv);
 
         List<SSQ> query = SsqDao.getInstance().query(this, null, null, null, null);
 
         mAdapter = new SSQHistoryAdapter(this, query);
 
+        lv.setLayoutManager(new LinearLayoutManager(this));
         lv.setAdapter(mAdapter);
+        lv.addItemDecoration(new MyDecoration(this, MyDecoration.VERTICAL_LIST));
 
         mRecommend = findViewById(R.id.recommend);
 
@@ -228,43 +229,27 @@ public class SSQHistoryActivity extends BaseActivity {
         });
     }
 
-    private class SSQHistoryAdapter extends BaseAdapter {
+    private class SSQHistoryAdapter extends Adapter<SSQHistoryAdapter.ViewHolder> {
 
         private List<SSQ> mList;
 
-        private LayoutInflater mInflator;
+        private Context mContext;
 
         public SSQHistoryAdapter(Context context, List<SSQ> list) {
-            mInflator = LayoutInflater.from(context);
             mList = list;
+            mContext = context;
         }
 
         @Override
-        public int getCount() {
-            return mList == null ? 0 : mList.size();
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.ssq_hisitory_item_layout, parent, false));
         }
 
         @Override
-        public SSQ getItem(int position) {
-            return mList.get(position);
-        }
+        public void onBindViewHolder(ViewHolder vh, int position) {
 
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
 
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder vh;
-            if (convertView == null) {
-                convertView = mInflator.inflate(R.layout.ssq_hisitory_item_layout, null);
-                vh = new ViewHolder(convertView);
-            } else {
-                vh = (ViewHolder) convertView.getTag();
-            }
-
-            SSQ ssq = getItem(position);
+            SSQ ssq = mList.get(position);
             vh.tvExpect.setText(getString(R.string.ssq_number, ssq.getExpect()));
 
             vh.tvOpenTime.setText(formatDate(ssq.getOpenTimeDate()));
@@ -289,11 +274,19 @@ public class SSQHistoryActivity extends BaseActivity {
                 }
             }
 
-            return convertView;
         }
 
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
 
-        private class ViewHolder {
+        @Override
+        public int getItemCount() {
+            return mList == null ? 0 : mList.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
 
             TextView tvExpect, tvOpenTime;
             TwoColorBall red1, red2, red3, red4, red5, red6, blue;
@@ -302,6 +295,7 @@ public class SSQHistoryActivity extends BaseActivity {
 
             public ViewHolder(View v) {
 
+                super(v);
                 tvExpect = (TextView) v.findViewById(R.id.expect);
                 tvOpenTime = (TextView) v.findViewById(R.id.openTime);
 

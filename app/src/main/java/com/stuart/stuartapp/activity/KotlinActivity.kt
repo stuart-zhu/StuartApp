@@ -64,5 +64,12 @@ class KotlinActivity : AppCompatActivity() {
             a.length > 3 -> println("a.length > 3")
             else -> println("a.length is not > 3")
         }
+
+        val aaa = """
+                | ONE_6
+                | TWO_7
+                | THREE—
+""".trimMargin()
+        println("aaa = $aaa")
     }
 }

@@ -60,10 +60,9 @@ public class DataUtils {
     // "data":[{"expect":"2016133","opencode":"15,16,21,22,27,33+15","opentime":"2016-11-13 21:20:40","opentimestamp":1479043240},{"expect":"2016132","opencode":"05,08,13,19,27,28+07","opentime":"2016-11-10 21:20:40","opentimestamp":1478784040},{"expect":"2016131","opencode":"04,10,18,19,25,27+02","opentime":"2016-11-08 21:20:40","opentimestamp":1478611240},{"expect":"2016130","opencode":"03,17,21,23,27,28+01","opentime":"2016-11-06 21:20:40","opentimestamp":1478438440},{"expect":"2016129","opencode":"05,06,08,21,31,33+14","opentime":"2016-11-03 21:20:40","opentimestamp":1478179240},{"expect":"2016128","opencode":"04,09,11,17,26,27+13","opentime":"2016-11-01 21:20:40","opentimestamp":1478006440},{"expect":"2016127","opencode":"07,12,17,26,29,31+16","opentime":"2016-10-30 21:20:40","opentimestamp":1477833640}]}
     public static void getSsq(int line, final GetSSQListener l) {
 //
-/**
-        String uri = "http://f.apiplus.cn/ssq-"+line+".json";
+        String uri = "http://f.apiplus.net/ssq-"+line+".json";
 
-        uri = "http://baidu.lecai.com/api/hao123/new_lottery_all.php";
+       /* uri = "http://baidu.lecai.com/api/hao123/new_lottery_all.php";
         HttpUtils u = new HttpUtils();
         u.send(HttpRequest.HttpMethod.GET, uri, new RequestCallBack<String>() {
             @Override
@@ -87,11 +86,11 @@ public class DataUtils {
             public void onFailure(HttpException e, String s) {
                 Log.i("stuart","");
             }
-        });
-*/
+        });*/
 
 
-        /*HttpUtils utils = new HttpUtils();
+
+        HttpUtils utils = new HttpUtils();
         utils.send(HttpRequest.HttpMethod.GET, uri, new RequestCallBack<String>() {
             @Override
             public void onSuccess(ResponseInfo<String> responseInfo) {
@@ -127,7 +126,7 @@ public class DataUtils {
                 LogUtil.e(TAG,"getSsq", "onFailure  " + e.getMessage() );
                 if (l != null) l.onGetFaile(s);
             }
-        });*/
+        });
     }
 
 
