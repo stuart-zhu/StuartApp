@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -154,7 +155,7 @@ public class WeatherActivity extends FragmentActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             removeIndicator();
-                            Contants.removeCityList(WeatherActivity.this, (String)mShowingFragment.getArguments().get("city"));
+                            Contants.removeCityList(WeatherActivity.this, (String) mShowingFragment.getArguments().get("city"));
 
 
                             // getSupportFragmentManager().beginTransaction().remove(mShowingFragment).commit();
@@ -207,25 +208,18 @@ public class WeatherActivity extends FragmentActivity {
         }
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);//获得位置服务
-        String provider = judgeProvider(locationManager);
-
-        if (provider != null) {//有位置提供器的情况
-            //为了压制getLastKnownLocation方法的警告
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
-                    PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) !=
-                            PackageManager.PERMISSION_GRANTED) {
-                return;
-            }
-            Location location = locationManager.getLastKnownLocation(provider);
-            /*if (location != null) {
-                getLocation(location);//得到当前经纬度并开启线程去反向地理编码
-            } else {
-                Toast.makeText(this, "暂时无法获得当前位置", Toast.LENGTH_SHORT).show();
-            }*/
-        } else {//不存在位置提供器的情况
-
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
         }
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, ll);
+
 
         Set<String> cityList = Contants.getCityList(this);
         if (cityList.size() == 0) {
@@ -239,6 +233,44 @@ public class WeatherActivity extends FragmentActivity {
             chooseCity(s, false);
         }
     }
+
+    private LocationListener ll = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+           // getLocation(location);
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+            if (provider != null) {//有位置提供器的情况
+                //为了压制getLastKnownLocation方法的警告
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) !=
+                        PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) !=
+                                PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                Location location = locationManager.getLastKnownLocation(provider);
+            if (location != null) {
+                getLocation(location);//得到当前经纬度并开启线程去反向地理编码
+            } else {
+                Toast.makeText(getApplicationContext(), "暂时无法获得当前位置", Toast.LENGTH_SHORT).show();
+            }
+            } else {//不存在位置提供器的情况
+
+            }
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
+    };
 
     private void addIndicator() {
         ImageView iv = new ImageView(this);
@@ -254,18 +286,6 @@ public class WeatherActivity extends FragmentActivity {
     private void removeIndicator() {
         if (indicator != null && indicator.getChildCount() > 0)
             indicator.removeViewAt(indicator.getChildCount() - 1);
-    }
-
-    private String judgeProvider(LocationManager locationManager) {
-        List<String> prodiverlist = locationManager.getProviders(true);
-        if (prodiverlist.contains(LocationManager.GPS_PROVIDER)) {
-            return LocationManager.GPS_PROVIDER;
-        } else if (prodiverlist.contains(LocationManager.NETWORK_PROVIDER)) {
-            return LocationManager.NETWORK_PROVIDER;
-        } else {
-            Toast.makeText(WeatherActivity.this, "没有可用的位置提供器", Toast.LENGTH_SHORT).show();
-        }
-        return null;
     }
 
     @Override

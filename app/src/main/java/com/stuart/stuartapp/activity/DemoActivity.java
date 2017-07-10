@@ -51,6 +51,7 @@ public class DemoActivity extends BaseActivity {
         list.add(R.string.demo_test_recycler);
         list.add(R.string.demo_test_sample);
         list.add(R.string.weather);
+        list.add(R.string.only_wifi);
         return list;
     }
 
@@ -106,6 +107,9 @@ public class DemoActivity extends BaseActivity {
                             break;
                         case R.string.weather:
                             intent = new Intent("com.stuart.weather");
+                            break;
+                        case R.string.only_wifi:
+                            intent = new Intent("com.stuart.only_wifi");
                             break;
                         default:
                             break;

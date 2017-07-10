@@ -2,7 +2,7 @@ package com.stuart.stuartapp.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.CollapsingToolbarLayout
+
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -15,8 +15,6 @@ import com.stuart.stuartapp.kotlin.adapter.MainKotlinAdapter
 
 class KotlinActivity : AppCompatActivity() {
 
-   // var rv: RecyclerView? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kotlin)
@@ -25,25 +23,22 @@ class KotlinActivity : AppCompatActivity() {
 
         val fab = findViewById(R.id.fab) as FloatingActionButton
 
-       val rv = findViewById(R.id.rv) as RecyclerView
+        val rv = findViewById(R.id.rv) as RecyclerView
         fab.setOnClickListener { view ->
-             Snackbar.make(view, "跳转界面？", Snackbar.LENGTH_LONG)
-                     .setAction("是的", View.OnClickListener { startActivity(Intent("com.stuart.pull.kotlin"))}).show()
+            Snackbar.make(view, "跳转界面？", Snackbar.LENGTH_LONG)
+                    .setAction("是的", View.OnClickListener { startActivity(Intent("com.stuart.pull.kotlin")) }).show()
         }
 
         val list = Array(100, { i -> i.toString() })
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter = MainKotlinAdapter(this, list)
 
-
         test()
 
     }
 
-
     fun test() {
         var x: Int = 1
-
 
         val xx: Array<Int> = arrayOf(1, 2, 3)
         for (c in xx) {
@@ -69,7 +64,11 @@ class KotlinActivity : AppCompatActivity() {
                 | ONE_6
                 | TWO_7
                 | THREE—
-""".trimMargin()
-        println("aaa = $aaa")
+                    """.trimMargin()
+        println("aaa = $aaa " + 5.x())
+    }
+
+    fun Int.x(): Int {
+        return this * 5
     }
 }

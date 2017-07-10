@@ -22,6 +22,7 @@
     <string name="two_color_bell">双色球</string>
     <string name="demo">Demo</string>
     <string name="weather">天气</string>
+    <string name="only_wifi">唯一的WiFi</string>
 
 
     <string name="weather_0">晴</string>
@@ -78,4 +79,8 @@
     <string name="sure_to_del">确认删除%s的天气信息？</string>
     <string name="title_activity_kotlin">KotlinActivity</string>
     <string name="kotlin">kotlin</string>
+    <string name="wifi_name">WiFi名</string>
+    <string name="ssid_name">WiFi密码</string>
+    <string name="save_wifi">保存WiFi</string>
+    <string name="none_wifi_name">空WiFi名</string>
 </resources>

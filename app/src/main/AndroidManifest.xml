@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.stuart.stuartapp">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -51,11 +53,11 @@
         </activity>
         <activity android:name=".demo.activity.AddContacts"></activity>
         <activity android:name=".demo.activity.TestRecycler">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="testRecycler" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".weather.WeatherActivity">
 
@@ -99,11 +101,7 @@
             android:name=".activity.KotlinActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-         <!--   <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+         <!--   -->
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <action android:name="kotlin"></action>
@@ -117,6 +115,20 @@
                 <action android:name="com.stuart.pull.kotlin"/>
 
                 <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.OnlyWifiActivity">
+            <intent-filter>
+                <action android:name="com.stuart.only_wifi"></action>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
