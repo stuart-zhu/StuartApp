@@ -9,6 +9,7 @@
     <string name="demo_test_sample">测试sample</string>
     <string name="ssq_recommending">推荐中...</string>
     <string name="add_contact">添加联系人</string>
+    <string name="demo_test_file">测试文件</string>
     <string name="sumbit">提交</string>
     <string name="app_description">Android drawer icon with material design animation</string>
     <string name="drawer_open">drawer_open</string>
@@ -83,4 +84,8 @@
     <string name="ssid_name">WiFi密码</string>
     <string name="save_wifi">保存WiFi</string>
     <string name="none_wifi_name">空WiFi名</string>
+    <string name="doit">开始截log</string>
+    <string name="doit_stop">停止截log</string>
+    <string name="demo_test_logcat">log</string>
+    <string name="news">头条</string>
 </resources>

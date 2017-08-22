@@ -24,6 +24,7 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+            java.srcDirs = ['src/main/java', 'src/main/aidl']
             //java.srcDirs = ['src/main/kotlin']
         }
     }
@@ -44,4 +45,5 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:+'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testCompile 'junit:junit:4.12'
+    compile files('libs/picasso-2.5.2.jar')
 }

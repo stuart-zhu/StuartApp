@@ -12,6 +12,7 @@ import com.stuart.stuartapp.activity.TwoColorBallActivity;
 import com.stuart.stuartapp.callback.GetSSQListener;
 import com.stuart.stuartapp.dao.SsqDao;
 import com.stuart.stuartapp.entity.SSQ;
+import com.stuart.stuartapp.service.FileLogService;
 import com.stuart.stuartapp.utils.DataUtils;
 import com.stuart.stuartapp.utils.LogUtil;
 import com.stuart.stuartapp.utils.ToastUtil;
@@ -32,6 +33,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+       // startService(new Intent(this, FileLogService.class));
         /*TelephonyManager mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         int simState = mTelephonyManager.getSimState();
         String hintMessage = "";

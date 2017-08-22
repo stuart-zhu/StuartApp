@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
 
     <application
         android:allowBackup="true"
@@ -59,15 +60,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>-->
         </activity>
+
+        <activity android:name=".demo.activity.DemoTestFileActivity">
+            <intent-filter>
+                <action android:name="com.demo.test_file" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".weather.WeatherActivity">
 
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
             <intent-filter>
                 <action android:name="com.stuart.weather" />
 
@@ -82,6 +83,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".demo.activity.SampleActivity" />
+
+        <activity android:name=".demo.activity.LogcatActivity">
+            <intent-filter>
+                <action android:name="com.stuart.logcat" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".news.NewsInfo" android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="com.stuart.news.info" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name=".db.StuartProvider"
@@ -101,36 +116,49 @@
             android:name=".activity.KotlinActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-         <!--   -->
+            <!--   -->
             <intent-filter>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
                 <action android:name="kotlin"></action>
             </intent-filter>
         </activity>
 
-        <activity android:name=".kotlin.PullActivity"
+        <activity
+            android:name=".kotlin.PullActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <action android:name="com.stuart.pull.kotlin"/>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.stuart.pull.kotlin" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
         <activity android:name=".activity.OnlyWifiActivity">
             <intent-filter>
                 <action android:name="com.stuart.only_wifi"></action>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
 
             </intent-filter>
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        </activity>
+
+        <activity android:name=".news.NewsActivity">
+            <intent-filter>
+                <action android:name="com.stuart.news" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <service android:name=".service.StuartLogService">
+            <intent-filter>
+                <action android:name="com.stuart.service.log" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".service.FileLogService" />
     </application>
 
 </manifest>

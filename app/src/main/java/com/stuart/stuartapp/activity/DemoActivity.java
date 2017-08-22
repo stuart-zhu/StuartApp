@@ -52,6 +52,10 @@ public class DemoActivity extends BaseActivity {
         list.add(R.string.demo_test_sample);
         list.add(R.string.weather);
         list.add(R.string.only_wifi);
+        list.add(R.string.demo_test_file);
+        list.add(R.string.demo_test_logcat);
+        list.add(R.string.news);
+
         return list;
     }
 
@@ -110,6 +114,15 @@ public class DemoActivity extends BaseActivity {
                             break;
                         case R.string.only_wifi:
                             intent = new Intent("com.stuart.only_wifi");
+                            break;
+                        case R.string.demo_test_file:
+                            intent = new Intent("com.demo.test_file");
+                            break;
+                        case R.string.demo_test_logcat:
+                            intent = new Intent("com.stuart.logcat");
+                            break;
+                        case R.string.news:
+                            intent = new Intent("com.stuart.news");
                             break;
                         default:
                             break;
