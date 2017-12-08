@@ -1,6 +1,7 @@
-package com.stuart.stuartapp.weather;
+package com.stuart.stuartapp.demo.weather;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.stuart.stuartapp.R;
 
@@ -10,6 +11,9 @@ import com.stuart.stuartapp.R;
 
 public class WeatherIconHelper {
     public static int getWeatherIconResId(Context coontext, String weather) {
+        if (TextUtils.isEmpty(weather)) {
+            return R.drawable.weather_0;
+        }
         if (weather.equals(coontext.getString(R.string.weather_0))) {
             return R.drawable.weather_0;
         } else if (weather.equals(coontext.getString(R.string.weather_1))) {
