@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="10dp">
+
+
+    <com.stuart.stuartapp.demo.jktk.widget.JKTKView
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/number"
+        android:layout_width="match_parent"
+        android:id="@+id/jktk_view"
+        android:layout_height="wrap_content"></com.stuart.stuartapp.demo.jktk.widget.JKTKView>
+
+    <LinearLayout
+        android:layout_below="@+id/jktk_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_layout"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/answer"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+
+            android:text="@string/answer"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/next_question"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/next_question"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/answer_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_layout"
+        />
+</RelativeLayout>

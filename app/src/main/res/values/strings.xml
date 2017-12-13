@@ -88,4 +88,13 @@
     <string name="doit_stop">停止截log</string>
     <string name="demo_test_logcat">log</string>
     <string name="news">头条</string>
+    <string name="san_guo_q">三国k</string>
+    <string name="jia_kao_ti_ku">驾考图库</string>
+    <string name="yes">对</string>
+    <string name="no">错</string>
+    <string name="answer">答案</string>
+    <string name="next_question">下一题</string>
+    <string name="add_contact_warning">输入的数字是添加的人数，请慎重！！！</string>
+    <string name="hao_mao">号码归属地</string>
+    <string name="query">查询一下</string>
 </resources>

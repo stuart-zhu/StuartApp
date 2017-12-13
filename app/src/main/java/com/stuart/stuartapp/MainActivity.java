@@ -1,12 +1,17 @@
 package com.stuart.stuartapp;
 
+import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.stuart.stuartapp.activity.TwoColorBallActivity;
 import com.stuart.stuartapp.callback.GetSSQListener;
@@ -17,73 +22,42 @@ import com.stuart.stuartapp.utils.DataUtils;
 import com.stuart.stuartapp.utils.LogUtil;
 import com.stuart.stuartapp.utils.ToastUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by stuart on 2016/11/7.
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends ActivityGroup {
 
     private static final String TAG = "MainActivity";
 
     private DrawerLayout mDrawerLayout;
+
+    private List<View> mViews;
+
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       // startService(new Intent(this, FileLogService.class));
-        /*TelephonyManager mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        int simState = mTelephonyManager.getSimState();
-        String hintMessage = "";
-        switch (simState) {
-            case TelephonyManager.SIM_STATE_UNKNOWN:
-                hintMessage = "Unknown";
-                break;
-            case TelephonyManager.SIM_STATE_ABSENT:
-                hintMessage = "no SIM card is available in the device";
-                break;
-            case TelephonyManager.SIM_STATE_PIN_REQUIRED:
-                hintMessage = "Locked: requires the user's SIM PIN to unlock";
-                break;
-            case TelephonyManager.SIM_STATE_PUK_REQUIRED:
-                hintMessage = "Locked: requires the user's SIM PUK to unlock ";
-                break;
-            case TelephonyManager.SIM_STATE_NETWORK_LOCKED:
-                hintMessage = "Locked: requries a network PIN to unlock";
-                break;
-            case TelephonyManager.SIM_STATE_READY:
-                hintMessage = "Ready";
-                break;
-            default:
-                break;
-        }
+        viewPager = (ViewPager) findViewById(R.id.vp);
 
-        ToastUtil.getInstance(this).show(hintMessage);
-        */
 
-        DataUtils.getSsq(50, new GetSSQListener() {
-            @Override
-            public void onGetSuccess(List<SSQ> infos) {
-                for (SSQ s : infos) {
-                    LogUtil.i(TAG, "onCreate", "onGetSuccess " + s);
-                    SsqDao.getInstance().insert(MainActivity.this, s);
-                }
-            }
+        loadSsq();
 
-            @Override
-            public void onGetFaile(final String result) {
+        mViews = new ArrayList<>();
 
-                runOnUiThread(new Runnable() {
-                                  @Override
-                                  public void run() {
-                                      ToastUtil.getInstance(MainActivity.this).show(result);
-                                  }
-                              }
-                );
-            }
-        });
+        mViews.add(
+
+                getLocalActivityManager().startActivity("demo",new Intent("demo")).getDecorView()
+
+        );
+        mViews.add(getLocalActivityManager().startActivity("demo1", new Intent("demo1")).getDecorView());
+
+        viewPager.setAdapter(new MyPagerAdapter(mViews));
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -116,4 +90,63 @@ public class MainActivity extends BaseActivity {
     }
 
 
+    private void loadSsq() {
+        DataUtils.getSsq(50, new GetSSQListener() {
+            @Override
+            public void onGetSuccess(List<SSQ> infos) {
+                for (SSQ s : infos) {
+                    LogUtil.i(TAG, "onCreate", "onGetSuccess " + s);
+                    SsqDao.getInstance().insert(MainActivity.this, s);
+                }
+            }
+
+            @Override
+            public void onGetFaile(final String result) {
+
+                runOnUiThread(new Runnable() {
+                                  @Override
+                                  public void run() {
+                                      ToastUtil.getInstance(MainActivity.this).show(result);
+                                  }
+                              }
+                );
+            }
+        });
+    }
+
+
+
+    class MyPagerAdapter extends PagerAdapter {
+        List<View> mList;
+
+        public MyPagerAdapter(List<View> list) {
+            mList = list;
+        }
+
+        @Override
+        public int getCount() {
+            return mList.size();
+        }
+
+        @Override
+        public boolean isViewFromObject(View arg0, Object arg1) {
+            return arg0 == (arg1);
+        }
+
+        @Override
+        public void destroyItem(View container, int position, Object object) {
+            ((ViewPager) container).removeView(mList.get(position));
+        }
+
+        @Override
+        public Object instantiateItem(View container, int position) {
+            ((ViewPager) container).addView(mList.get(position), 0);
+            return mList.get(position);
+        }
+
+        @Override
+        public void finishUpdate(ViewGroup container) {
+            super.finishUpdate(container);
+        }
+    }
 }

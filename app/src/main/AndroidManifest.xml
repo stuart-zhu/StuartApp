@@ -32,7 +32,7 @@
         <meta-data
             android:name="com.baidu.speech.API_KEY"
             android:value="02qsoV3AIvYqH2hEkmLvWblE" />
-        <meta-data
+        <metaR-data
             android:name="com.baidu.speech.SECRET_KEY"
             android:value="172a23b02564d514baa7cade4cd2b708" />
 
@@ -52,13 +52,20 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.Demo1Activity">
+            <intent-filter>
+                <action android:name="demo1" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".demo.activity.AddContacts"></activity>
         <activity android:name=".demo.activity.TestRecycler">
-            <!--<intent-filter>
+            <intent-filter>
                 <action android:name="testRecycler" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
 
         <activity android:name=".demo.activity.DemoTestFileActivity">
@@ -67,7 +74,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".weather.WeatherActivity">
+        <activity android:name=".demo.weather.WeatherActivity">
 
             <intent-filter>
                 <action android:name="com.stuart.weather" />
@@ -75,7 +82,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".weather.SelectCity">
+        <activity android:name=".demo.weather.SelectCity">
             <intent-filter>
                 <action android:name="com.stuart.add_weather_city" />
 
@@ -91,18 +98,24 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".news.NewsInfo" android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".demo.news.NewsInfo" android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="com.stuart.news.info" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
+        <activity android:name=".demo.sgq.Sqk">
+            <intent-filter>
+                <action android:name="com.stuart.sanguoq"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <provider
             android:name=".db.StuartProvider"
             android:authorities="com.stuart.stuartapp" />
         <provider
-            android:name=".weather.db.WeatherProvider"
+            android:name=".demo.weather.db.WeatherProvider"
             android:authorities="com.stuart.stuartapp.weather" />
 
         <activity android:name=".boy.MyBoy">
@@ -144,7 +157,22 @@
 
         </activity>
 
-        <activity android:name=".news.NewsActivity">
+        <activity android:name=".demo.jktk.JKTKActivity"
+            >
+            <intent-filter>
+                <action android:name="com.stuart.jktk"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".demo1.haoma.HaoMaActivity"
+            >
+            <intent-filter>
+                <action android:name="com.stuart.hao_ma"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".demo.news.NewsActivity">
             <intent-filter>
                 <action android:name="com.stuart.news" />
                 <category android:name="android.intent.category.DEFAULT" />

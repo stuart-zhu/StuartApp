@@ -118,12 +118,12 @@
                 android:layout_below="@+id/aqi_info"
                 android:background="#FF0000FF"/>
 
-            <com.stuart.stuartapp.weather.widget.TrendGraph
+            <com.stuart.stuartapp.demo.weather.widget.TrendGraph
                 android:layout_below="@+id/line"
                 android:id="@+id/trend"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                ></com.stuart.stuartapp.weather.widget.TrendGraph>
+                ></com.stuart.stuartapp.demo.weather.widget.TrendGraph>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"

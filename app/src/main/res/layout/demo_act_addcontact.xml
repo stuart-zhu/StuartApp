@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
+        android:hint="@string/add_contact_warning"
+        android:textColorHint="#66ff0000"
         android:ems="10" >
 
         <requestFocus />
