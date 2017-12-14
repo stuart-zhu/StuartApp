@@ -21,6 +21,7 @@ import com.stuart.stuartapp.service.FileLogService;
 import com.stuart.stuartapp.utils.DataUtils;
 import com.stuart.stuartapp.utils.LogUtil;
 import com.stuart.stuartapp.utils.ToastUtil;
+import com.stuart.stuartapp.widget.PagerPointView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +39,16 @@ public class MainActivity extends ActivityGroup {
 
     private ViewPager viewPager;
 
+    private PagerPointView mPagerPointView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         viewPager = (ViewPager) findViewById(R.id.vp);
+
+        mPagerPointView = (PagerPointView) findViewById(R.id.pagerPoint);
 
 
         loadSsq();
@@ -57,8 +62,25 @@ public class MainActivity extends ActivityGroup {
         );
         mViews.add(getLocalActivityManager().startActivity("demo1", new Intent("demo1")).getDecorView());
 
+        mPagerPointView.initialize(2, 0);
         viewPager.setAdapter(new MyPagerAdapter(mViews));
 
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                mPagerPointView.setSelectPosition(position);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         final NavigationView mNaviagionView = (NavigationView) findViewById(R.id.navigation_view);

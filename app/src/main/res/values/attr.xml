@@ -6,4 +6,15 @@
         <attr name="ball_enable" format="boolean"/>
     </declare-styleable>
 
+    <declare-styleable name="BaseDoT">
+        <attr name="circleColor" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="BaseDoTView">
+        <attr name="slideCount" format="integer|reference" />
+        <attr name="selectPosition" format="integer|reference" />
+        <attr name="selectedIndicatorColor" format="color|reference" />
+        <attr name="unselectedIndicatorColor" format="color|reference" />
+        <attr name="circleRadius" format="dimension|reference" />
+    </declare-styleable>
 </resources>
