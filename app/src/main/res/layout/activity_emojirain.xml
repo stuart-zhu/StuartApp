@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.stuart.stuartapp.widget.EmojiRainLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/group_emoji_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:per="10"
+    app:duration="7200"
+    app:dropDuration="2400"
+    app:dropFrequency="500"
+    tools:context=".demo1.emojirain.EmojiRainActivity"
+    >
+    <TextView
+        android:text="Hello world!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</com.stuart.stuartapp.widget.EmojiRainLayout>

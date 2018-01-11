@@ -17,4 +17,12 @@
         <attr name="unselectedIndicatorColor" format="color|reference" />
         <attr name="circleRadius" format="dimension|reference" />
     </declare-styleable>
+
+    <declare-styleable name="EmojiRainLayout">
+        <attr name="per" format="integer" />
+        <attr name="duration" format="integer" />
+        <attr name="dropDuration" format="integer" />
+        <attr name="dropFrequency" format="integer" />
+    </declare-styleable>
+
 </resources>

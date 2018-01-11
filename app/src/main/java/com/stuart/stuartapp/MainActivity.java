@@ -61,8 +61,12 @@ public class MainActivity extends ActivityGroup {
 
         );
         mViews.add(getLocalActivityManager().startActivity("demo1", new Intent("demo1")).getDecorView());
+        mViews.add(
 
-        mPagerPointView.initialize(2, 0);
+                getLocalActivityManager().startActivity("demo2",new Intent("demo")).getDecorView()
+
+        );
+        mPagerPointView.initialize(3, 0);
         viewPager.setAdapter(new MyPagerAdapter(mViews));
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

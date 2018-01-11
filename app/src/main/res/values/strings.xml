@@ -97,4 +97,6 @@
     <string name="add_contact_warning">输入的数字是添加的人数，请慎重！！！</string>
     <string name="hao_mao">号码归属地</string>
     <string name="query">查询一下</string>
+    <string name="baidu_map">百度地图</string>
+    <string name="emojirain">降落伞</string>
 </resources>

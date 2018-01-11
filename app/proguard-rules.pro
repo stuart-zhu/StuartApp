@@ -40,6 +40,6 @@
     -keepattributes *Annotation*
 
 
-    -keep class com.baidu.android.**{*;}
-    -keep class com.baidu.voicerecognition.android.**{*;}
-    -keep class com.turing.androidsdk.**{*;}
+    -keep class com.baidu.** {*;}
+    -keep class vi.com.** {*;}
+    -dontwarn com.baidu.**

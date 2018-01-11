@@ -19,16 +19,27 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".StuartApplication"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.baidu.speech.APP_ID"
             android:value="9601898" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="ofULVPGAmxkZKfG7cEjwdtomH11qk38H" />
         <meta-data
             android:name="com.baidu.speech.API_KEY"
             android:value="02qsoV3AIvYqH2hEkmLvWblE" />
@@ -176,6 +187,21 @@
             <intent-filter>
                 <action android:name="com.stuart.news" />
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".demo1.baidumap.BaiduMapActivity"
+            >
+            <intent-filter>
+                <action android:name="com.stuart.baidumap.main"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".demo1.emojirain.EmojiRainActivity">
+            <intent-filter>
+                <action android:name="com.stuart.emojirain"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 

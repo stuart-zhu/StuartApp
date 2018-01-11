@@ -50,6 +50,8 @@ public class Demo1Activity extends BaseActivity {
         List<Integer> list = new ArrayList<>();
 
         list.add(R.string.hao_mao);
+        list.add(R.string.baidu_map);
+        list.add(R.string.emojirain);
 
         return list;
     }
@@ -97,8 +99,13 @@ public class Demo1Activity extends BaseActivity {
                     switch (getItem(position)) {
                         case R.string.hao_mao:
                             intent = new Intent("com.stuart.hao_ma");
-
                             break;
+                        case R.string.baidu_map:
+                            intent = new Intent("com.stuart.baidumap.main");
+                            break;
+                        case R.string.emojirain:
+                            intent = new Intent("com.stuart.emojirain");
+                                break;
                         default:
                             break;
 
