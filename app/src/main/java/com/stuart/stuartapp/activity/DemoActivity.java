@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ContentView;
-import com.lidroid.xutils.view.annotation.ViewInject;
-import com.stuart.stuartapp.BaseActivity;
+
 import com.stuart.stuartapp.R;
 import com.stuart.stuartapp.demo.activity.AddContacts;
 import com.stuart.stuartapp.demo.activity.SampleActivity;
@@ -25,25 +23,27 @@ import java.util.List;
 /**
  * Created by stuart on 2016/12/12.
  */
-@ContentView(R.layout.activiy_demo)
-public class DemoActivity extends BaseActivity {
 
-    @ViewInject(R.id.lv)
+public class DemoActivity extends Fragment {
+
+
     private ListView mListView;
 
     private DemoAdapter mAdapter;
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ViewUtils.inject(this);
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activiy_demo, null);
+        mListView = (ListView) view.findViewById(R.id.lv);
         prepareData();
 
-        mAdapter = new DemoAdapter(this, prepareData());
+        mAdapter = new DemoAdapter(getContext(), prepareData());
         mListView.setAdapter(mAdapter);
 
-
+        return view;
     }
+
 
     private List<Integer> prepareData() {
         List<Integer> list = new ArrayList<>();
@@ -55,7 +55,6 @@ public class DemoActivity extends BaseActivity {
         list.add(R.string.demo_test_file);
         list.add(R.string.demo_test_logcat);
         list.add(R.string.news);
-        list.add(R.string.san_guo_q);
         list.add(R.string.jia_kao_ti_ku);
 
         return list;
@@ -103,13 +102,13 @@ public class DemoActivity extends BaseActivity {
                     Intent intent = null;
                     switch (getItem(position)) {
                         case R.string.add_contact:
-                            intent = new Intent(DemoActivity.this, AddContacts.class);
+                            intent = new Intent(getContext(), AddContacts.class);
                             break;
                         case R.string.demo_test_recycler:
                             intent = new Intent("testRecycler");
                             break;
                         case R.string.demo_test_sample:
-                            intent = new Intent(DemoActivity.this, SampleActivity.class);
+                            intent = new Intent(getContext(), SampleActivity.class);
                             break;
                         case R.string.weather:
                             intent = new Intent("com.stuart.weather");

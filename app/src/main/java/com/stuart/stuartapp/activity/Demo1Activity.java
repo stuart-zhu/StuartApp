@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,27 +25,25 @@ import java.util.List;
 /**
  * Created by stuart on 2017/12/12.
  */
-@ContentView(R.layout.activiy_demo)
-public class Demo1Activity extends BaseActivity {
+public class Demo1Activity extends Fragment {
 
-
-    @ViewInject(R.id.lv)
     private ListView mListView;
 
     private DemoAdapter mAdapter;
 
+    @Nullable
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ViewUtils.inject(this);
-
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View inflate = inflater.inflate(R.layout.activiy_demo, null);
+        mListView = (ListView) inflate.findViewById(R.id.lv);
         prepareData();
 
-        mAdapter = new DemoAdapter(this, prepareData());
+        mAdapter = new DemoAdapter(getContext(), prepareData());
         mListView.setAdapter(mAdapter);
-
-
+        return inflate;
     }
+
+
 
     private List<Integer> prepareData() {
         List<Integer> list = new ArrayList<>();

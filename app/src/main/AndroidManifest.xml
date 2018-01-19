@@ -56,20 +56,7 @@
         </activity>
         <activity android:name=".activity.TwoColorBallActivity" />
         <activity android:name=".activity.SSQHistoryActivity" />
-        <activity android:name=".activity.DemoActivity">
-            <intent-filter>
-                <action android:name="demo" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.Demo1Activity">
-            <intent-filter>
-                <action android:name="demo1" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity android:name=".demo.activity.AddContacts"></activity>
         <activity android:name=".demo.activity.TestRecycler">
             <intent-filter>

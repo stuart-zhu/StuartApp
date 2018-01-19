@@ -33,14 +33,14 @@ public class EmojiRainActivity extends BaseActivity{
         erl.setPer(10);
 
         // set total duration in milliseconds, default 8000
-        erl.setDuration(7200);
+        erl.setDuration(7000);
 
         // set average drop duration in milliseconds, default 2400
         erl.setDropDuration(2400);
 
         // set drop frequency in milliseconds, default 500
         erl.setDropFrequency(500);
-        mHandler.sendEmptyMessageDelayed(0, 1000);
+        mHandler.sendEmptyMessageDelayed(0, 10);
     }
 
     private Handler mHandler = new Handler() {
@@ -55,5 +55,11 @@ public class EmojiRainActivity extends BaseActivity{
     protected void onPause() {
         super.onPause();
         erl.stopDropping();
+    }
+
+
+    @Override
+    public void onStateNotSaved() {
+        super.onStateNotSaved();
     }
 }

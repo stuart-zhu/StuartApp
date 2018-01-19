@@ -138,6 +138,7 @@ public class EmojiRainLayout extends PercentFrameLayout {
     public void startDropping() {
         initEmojisPool();
 
+
         Randoms.setSeed(7);
         mWindowHeight = getWindowHeight();
 

@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.stuart.stuartapp.activity.Demo1Activity;
+import com.stuart.stuartapp.activity.DemoActivity;
 import com.stuart.stuartapp.activity.TwoColorBallActivity;
 import com.stuart.stuartapp.callback.GetSSQListener;
 import com.stuart.stuartapp.dao.SsqDao;
@@ -21,7 +27,9 @@ import com.stuart.stuartapp.service.FileLogService;
 import com.stuart.stuartapp.utils.DataUtils;
 import com.stuart.stuartapp.utils.LogUtil;
 import com.stuart.stuartapp.utils.ToastUtil;
+import com.stuart.stuartapp.utils.ViewFindUtils;
 import com.stuart.stuartapp.widget.PagerPointView;
+import com.stuart.stuartapp.widget.SlidingTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +37,7 @@ import java.util.List;
 /**
  * Created by stuart on 2016/11/7.
  */
-public class MainActivity extends ActivityGroup {
+public class MainActivity extends FragmentActivity {
 
     private static final String TAG = "MainActivity";
 
@@ -41,50 +49,31 @@ public class MainActivity extends ActivityGroup {
 
     private PagerPointView mPagerPointView;
 
+    private SlidingTabLayout tabLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tabLayout = ViewFindUtils.find(getWindow().getDecorView(), R.id.stl);
+
 
         viewPager = (ViewPager) findViewById(R.id.vp);
 
         mPagerPointView = (PagerPointView) findViewById(R.id.pagerPoint);
 
 
+
         loadSsq();
 
         mViews = new ArrayList<>();
 
-        mViews.add(
 
-                getLocalActivityManager().startActivity("demo",new Intent("demo")).getDecorView()
-
-        );
-        mViews.add(getLocalActivityManager().startActivity("demo1", new Intent("demo1")).getDecorView());
-        mViews.add(
-
-                getLocalActivityManager().startActivity("demo2",new Intent("demo")).getDecorView()
-
-        );
         mPagerPointView.initialize(3, 0);
-        viewPager.setAdapter(new MyPagerAdapter(mViews));
+        loadFragments();
+        viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                mPagerPointView.setSelectPosition(position);
-            }
 
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         final NavigationView mNaviagionView = (NavigationView) findViewById(R.id.navigation_view);
@@ -113,6 +102,7 @@ public class MainActivity extends ActivityGroup {
         localePicker.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         localePicker.setAction("android.intent.action.VIEW");
         startActivity(localePicker);*/
+        tabLayout.setViewPager(viewPager);
     }
 
 
@@ -142,37 +132,50 @@ public class MainActivity extends ActivityGroup {
 
 
 
-    class MyPagerAdapter extends PagerAdapter {
-        List<View> mList;
 
-        public MyPagerAdapter(List<View> list) {
-            mList = list;
+    private List<Fragment> mFragments;
+    private String[] mTitles = new String[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K"
+    };
+
+    private void loadFragments() {
+        mFragments = new ArrayList<>();
+        for(int i = 0; i < mTitles.length; i++) {
+            if (i%2 == 0) {
+                mFragments.add(new DemoActivity());
+            } else {
+                mFragments.add(new Demo1Activity());
+            }
+        }
+    }
+    private class MyPagerAdapter extends FragmentPagerAdapter {
+        public MyPagerAdapter(FragmentManager fm) {
+            super(fm);
         }
 
         @Override
         public int getCount() {
-            return mList.size();
+            return mFragments.size();
         }
 
         @Override
-        public boolean isViewFromObject(View arg0, Object arg1) {
-            return arg0 == (arg1);
+        public CharSequence getPageTitle(int position) {
+            return mTitles[position];
         }
 
         @Override
-        public void destroyItem(View container, int position, Object object) {
-            ((ViewPager) container).removeView(mList.get(position));
-        }
-
-        @Override
-        public Object instantiateItem(View container, int position) {
-            ((ViewPager) container).addView(mList.get(position), 0);
-            return mList.get(position);
-        }
-
-        @Override
-        public void finishUpdate(ViewGroup container) {
-            super.finishUpdate(container);
+        public Fragment getItem(int position) {
+            return mFragments.get(position);
         }
     }
 }
