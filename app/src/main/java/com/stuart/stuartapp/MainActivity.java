@@ -85,7 +85,7 @@ public class MainActivity extends FragmentActivity {
                         startActivity(new Intent(MainActivity.this, TwoColorBallActivity.class));
                         break;
                     case R.id.demo:
-                        startActivity(new Intent("demo"));
+                        //startActivity(new Intent("demo"));
                         break;
                     case R.id.kotlin:
                         startActivity(new Intent("kotlin"));

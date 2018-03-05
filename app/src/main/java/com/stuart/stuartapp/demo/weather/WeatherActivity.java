@@ -215,6 +215,8 @@ public class WeatherActivity extends FragmentActivity {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
+            chooseCity("昌平区", true);
+
             return;
         }
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, ll);
