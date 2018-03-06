@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -215,17 +216,34 @@ public class WeatherActivity extends FragmentActivity {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            chooseCity("昌平区", true);
+         //   chooseCity("昌平区", true);
 
+            ActivityCompat.requestPermissions(this, new String[] {
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+            },123);
             return;
         }
+
+        loadlocation();
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 123) {
+            loadlocation();
+        }
+    }
+
+    private void loadlocation() {
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, ll);
 
 
         Set<String> cityList = Contants.getCityList(this);
         if (cityList.size() == 0) {
-          /*  cityList.add("朝阳区");
-            Contants.addCityList(this, "朝阳区");*/
+
             cityList.add("昌平区");
             Contants.addCityList(this, "昌平区");
         }
@@ -234,7 +252,6 @@ public class WeatherActivity extends FragmentActivity {
             chooseCity(s, false);
         }
     }
-
     private LocationListener ll = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
