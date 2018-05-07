@@ -11,12 +11,14 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.stuart.stuartapp.demo.weather.entity.WeatherInfo;
+import com.stuart.stuartapp.demo.weather.request.WeatherBaseRequest;
 import com.stuart.stuartapp.utils.Contants;
 import com.stuart.stuartapp.demo.weather.entity.Aqi;
 import com.stuart.stuartapp.demo.weather.entity.CityInfo;
 import com.stuart.stuartapp.demo.weather.entity.DailyWeather;
 import com.stuart.stuartapp.demo.weather.entity.HourWeather;
 import com.stuart.stuartapp.demo.weather.entity.IndexInfo;
+import com.stuart.stuartapp.utils.LogUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,13 +28,19 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
 import static com.stuart.stuartapp.demo.weather.db.WeatherProvider.WEATHER_CITY_URI;
+
 
 /**
  * Created by stuart on 2017/4/13.
  */
 
 public class WeatherDateUtils {
+
+    private static final String TAG = "WeatherDataUtils";
 
     private static final String BASE_URL = "http://webservice.36wu.com/weatherService.asmx/";
 
@@ -43,20 +51,36 @@ public class WeatherDateUtils {
     }
     public static void getAllCityInfo(final Context c, final OnCityGetListener l) {
 
-        String uri = "http://jisutqybmf.market.alicloudapi.com/weather/city";
-        HttpUtils utils = new HttpUtils();
-        RequestParams rp = new RequestParams();
-        rp.addHeader("Authorization", "APPCODE " + "e35f4af137054c49aabcd10c6996bb0e");
-        utils.send(HttpRequest.HttpMethod.GET, uri, rp, new RequestCallBack<String>() {
+
+        Observer<Object> observer = new Observer<Object>() {
+
+
             @Override
-            public void onSuccess(final ResponseInfo<String> responseInfo) {
+            public void onError(Throwable throwable) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(final Object o) {
+
+                LogUtil.i(TAG, "getCity -> onNext", o.toString());
 
                 new Thread(){
                     @Override
                     public void run() {
                         try {
-                            JSONObject jo = new JSONObject(responseInfo.result);
-                            Log.i("stuart", "responseInfo.result = " + responseInfo.result);
+                            JSONObject jo = new JSONObject(String.valueOf(o));
+                            Log.i("stuart", "responseInfo.result = " + o.toString());
                             if (jo.getInt("status") == 0 && jo.getString("msg").equals("ok")) {
                                 if (l != null) l.onCityGetStart();
                                 JSONArray jsonArray = jo.getJSONArray("result");
@@ -94,7 +118,7 @@ public class WeatherDateUtils {
                                 }
 
 
-                                /* */
+
                                 if (l != null) l.onCityGetFinish();
                                 Contants.setCiityAlready(c, true);
                             }
@@ -107,18 +131,13 @@ public class WeatherDateUtils {
                     }
                 }.start();
 
-
             }
-
-            @Override
-            public void onFailure(HttpException e, String s) {
-                Log.e("stuart", "", e);
-            }
-        });
+        };
+        com.stuart.stuartapp.demo.weather.request.HttpRequest.getInstance().getCity(observer);
     }
 
     public static void getWeather(Context context, String city, final onWeatherGetListener l) {
-        String uri = "http://jisutqybmf.market.alicloudapi.com/weather/query";
+        /*String uri = "http://jisutqybmf.market.alicloudapi.com/weather/query";
         HttpUtils utils = new HttpUtils();
         RequestParams rp = new RequestParams();
         rp.addHeader("Authorization", "APPCODE " + "e35f4af137054c49aabcd10c6996bb0e");
@@ -247,6 +266,142 @@ public class WeatherDateUtils {
                 l.onWeatherGetFailure(e.getLocalizedMessage());
             }
         });
+*/
+        Observer<Object> sub = new Observer<Object>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(Object value) {
+                try {
+                    JSONObject
+                            jo = new JSONObject(value.toString());
+                    if (jo.getInt("status") == 0 && jo.getString("msg").equals("ok")) {
+
+                        JSONObject j = jo.getJSONObject("result");
+                        WeatherInfo info = new WeatherInfo();
+                        info.setCity(j.getString("city"));
+                        info.setCityId(j.getInt("cityid"));
+                        info.setCityCode(j.getString("citycode"));
+                        info.setDate(j.getString("date"));
+                        info.setWeek(j.getString("week"));
+                        info.setWeather(j.getString("weather"));
+                        info.setTemp(j.getString("temp"));
+                        info.setTemphigh(j.getString("temphigh"));
+                        info.setTemplow(j.getString("templow"));
+                        info.setHumidity(j.getString("humidity"));
+                        info.setPressure(j.getString("pressure"));
+                        info.setWindspeed(j.getString("windspeed"));
+                        info.setWinddirect(j.getString("winddirect"));
+                        info.setWindpower(j.getString("windpower"));
+                        info.setUpdatetime(j.getString("updatetime"));
+
+                        JSONArray jIndex = j.getJSONArray("index");
+                        for (int i = 0 ; i < jIndex.length(); i++) {
+                            try {
+
+                                JSONObject ji = jIndex.getJSONObject(i);
+                                IndexInfo index = new IndexInfo(ji.getString("iname"), ji.getString("ivalue"), ji.getString("detail"));
+                                info.addIndex(index);
+                            } catch (JSONException e) {
+
+                            }
+                        }
+
+                        JSONObject aqiJ = j.getJSONObject("aqi");
+                        Aqi aqi = new Aqi();
+                        aqi.setSo2(aqiJ.getString("so2"));
+                        aqi.setSo224(aqiJ.getString("so224"));
+                        aqi.setNo2(aqiJ.getString("no2"));
+                        aqi.setNo224(aqiJ.getString("no224"));
+                        aqi.setCo(aqiJ.getString("co"));
+                        aqi.setCo24(aqiJ.getString("co24"));
+                        aqi.setO3(aqiJ.getString("o3"));
+                        aqi.setO38(aqiJ.getString("o38"));
+                        aqi.setO324(aqiJ.getString("o324"));
+                        aqi.setPm10(aqiJ.getString("pm10"));
+                        aqi.setPm1024(aqiJ.getString("pm1024"));
+                        aqi.setPm2_5(aqiJ.getString("pm2_5"));
+                        aqi.setPm2_524(aqiJ.getString("pm2_524"));
+                        aqi.setIno2(aqiJ.getString("ino2"));
+                        aqi.setIco(aqiJ.getString("ico"));
+                        aqi.setIo3(aqiJ.getString("io3"));
+                        aqi.setIo38(aqiJ.getString("io38"));
+                        aqi.setIpm10(aqiJ.getString("ipm10"));
+                        aqi.setIpm2_5(aqiJ.getString("ipm2_5"));
+                        aqi.setAqi(aqiJ.getString("aqi"));
+                        aqi.setPrimarypollutant(aqiJ.getString("primarypollutant"));
+                        aqi.setQuality(aqiJ.getString("quality"));
+                        aqi.setTimepoint(aqiJ.getString("timepoint"));
+
+                        JSONObject aqiinfo = aqiJ.getJSONObject("aqiinfo");
+                        aqi.setLevel(aqiinfo.getString("level"));
+                        aqi.setColor(aqiinfo.getString("color"));
+                        aqi.setAffect(aqiinfo.getString("affect"));
+
+                        info.setAqi(aqi);
+
+                        JSONArray dailyJ = j.getJSONArray("daily");
+                        for (int i = 0; i < dailyJ.length(); i++) {
+                            JSONObject jsonObject = dailyJ.getJSONObject(i);
+                            DailyWeather dw = new DailyWeather();
+                            dw.setDate(jsonObject.getString("date"));
+                            dw.setWeek(jsonObject.getString("week"));
+                            dw.setSunrise(jsonObject.getString("sunrise"));
+                            dw.setSunset(jsonObject.getString("sunset"));
+                            JSONObject night = jsonObject.getJSONObject("night");
+                            dw.setNight_weather(night.getString("weather"));
+                            dw.setTemplow(night.getString("templow"));
+                            dw.setNight_winddirect(night.getString("winddirect"));
+                            dw.setNight_windpower(night.getString("windpower"));
+                            JSONObject day = jsonObject.getJSONObject("day");
+                            dw.setDay_weather(day.getString("weather"));
+                            dw.setTempHigh(day.getString("temphigh"));
+                            dw.setDay_winddirect(day.getString("winddirect"));
+                            dw.setDay_windpower(day.getString("windpower"));
+                            info.addDailyWeather(dw);
+                        }
+
+                        JSONArray hourly = j.getJSONArray("hourly");
+
+                        //time":"18:00","weather":"多云","temp":"28","img":"1"},
+                        for (int i = 0 ; i < hourly.length() ; i++) {
+                            JSONObject jsonObject = hourly.getJSONObject(i);
+                            HourWeather hw = new HourWeather();
+                            hw.setTemp(jsonObject.getString("temp"));
+                            hw.setTime(jsonObject.getString("time"));
+                            hw.setWeather(jsonObject.getString("weather"));
+                            info.addHourWeather(hw);
+                        }
+
+                        l.onWeatherGet(info);
+                        Log.i("stuart", "info = " + info.toString());
+
+
+                    } else {
+                        l.onWeatherGetFailure("status = " + jo.getInt("status") +",msg = "+ jo.getString("msg"));
+                    }
+                } catch (JSONException e) {
+                    Log.e("stuart", "",e);
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+                LogUtil.e(TAG, "getWeather onError", e.getLocalizedMessage());
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+        com.stuart.stuartapp.demo.weather.request.HttpRequest.getInstance().getWeather(sub, city);
     }
 
     public interface onWeatherGetListener {

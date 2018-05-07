@@ -45,7 +45,7 @@
         <meta-data
             android:name="com.baidu.speech.API_KEY"
             android:value="02qsoV3AIvYqH2hEkmLvWblE" />
-        <metaR-data
+        <meta-data
             android:name="com.baidu.speech.SECRET_KEY"
             android:value="172a23b02564d514baa7cade4cd2b708" />
 

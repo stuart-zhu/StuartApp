@@ -9,6 +9,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.stuart.stuartapp.R;
 import com.stuart.stuartapp.demo.weather.entity.HourWeather;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class TrendGraph extends View {
     public TrendGraph(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mLinePaint = new Paint();
-        mLinePaint.setColor(Color.BLUE);
+        mLinePaint.setColor(context.getResources().getColor(R.color.colorPrimary));
         mTextPaint = new TextPaint();
         mTextPaint.setTextSize(30);
         circleRadius = 3;

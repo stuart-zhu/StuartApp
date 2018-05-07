@@ -5,7 +5,7 @@
     android:accessibilityFeedbackType="feedbackGeneric"
     android:accessibilityFlags="flagDefault"
     android:canRetrieveWindowContent="true"
-    android:description="XXXX"
+    android:description="@string/description"
     android:notificationTimeout="100"
     android:packageNames="com.android.settings"
     />

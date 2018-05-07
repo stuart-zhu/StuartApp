@@ -8,6 +8,7 @@
         android:id="@+id/icon_weather"
         android:layout_width="wrap_content"
         android:layout_centerVertical="true"
+        android:tint="@color/colorPrimary"
         android:layout_height="wrap_content" />
 
     <LinearLayout
@@ -38,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_alignLeft="@+id/weather_container"
-        android:background="#FF0000FF"
+        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"/>
 
     <TextView

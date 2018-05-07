@@ -60,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/weather"
                     android:layout_marginLeft="30dp"
+                    android:tint="@color/colorPrimary"
                     android:layout_toRightOf="@+id/temp" />
             </LinearLayout>
 
@@ -116,7 +117,7 @@
                 android:id="@+id/line"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/aqi_info"
-                android:background="#FF0000FF"/>
+                android:background="@color/colorPrimaryDark"/>
 
             <com.stuart.stuartapp.demo.weather.widget.TrendGraph
                 android:layout_below="@+id/line"
@@ -130,7 +131,7 @@
                 android:id="@+id/line2"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/trend"
-                android:background="#FF0000FF"/>
+                android:background="@color/colorPrimaryDark"/>
 
         </RelativeLayout>
 

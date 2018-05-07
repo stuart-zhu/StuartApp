@@ -33,7 +33,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile files('libs/RxAndroid.jar')
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile files('libs/xUtils-2.6.14.jar')
     compile files('libs/Baidu-SpeechRecognitionUI-SDK-Android-1.6.2.jar')
     compile files('libs/com.baidu.android.localasr_1.1.22.jar')
@@ -49,4 +49,14 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile files('libs/picasso-2.5.2.jar')
     compile files('libs/BaiduLBS_Android.jar')
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile files('libs/adapter-rxjava2-2.3.0.jar')
+    //    complie 'io.reactivex.rxjava2:rxjava:2.0.1'
+    implementation project(':rxandroid2')
+    implementation files('libs/RxAndroid.jar')
+}
+
+dependencies {
+    compile project(':rxandroid2')
 }

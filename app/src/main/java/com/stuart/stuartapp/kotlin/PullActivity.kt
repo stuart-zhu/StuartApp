@@ -20,5 +20,6 @@ class PullActivity : AppCompatActivity() {
         ct.title = "66666666666"
         ct.setExpandedTitleColor(Color.YELLOW)
 ct.setCollapsedTitleTextColor(Color.WHITE)
+
     }
 }

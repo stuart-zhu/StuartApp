@@ -99,4 +99,6 @@
     <string name="query">查询一下</string>
     <string name="baidu_map">百度地图</string>
     <string name="emojirain">降落伞</string>
+
+    <string name="description">没有描述</string>
 </resources>
