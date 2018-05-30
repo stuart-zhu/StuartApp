@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/user"
+        android:inputType="number"
+        android:layout_marginTop="160dp"
+        android:minWidth="200dp"
+        android:layout_width="wrap_content"
+        android:hint="用户名"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/psw"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:minWidth="200dp"
+        android:hint="密码"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content" />
+
+
+    <EditText
+        android:id="@+id/che_code"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:minWidth="200dp"
+        android:hint="车牌号"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="登录"
+        />
+
+</LinearLayout>

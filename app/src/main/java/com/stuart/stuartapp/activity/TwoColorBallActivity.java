@@ -109,7 +109,7 @@ public class TwoColorBallActivity extends BaseActivity {
     private void startGet() {
         String text = etCount.getText().toString();
         if (TextUtils.isEmpty(text)) {
-            ToastUtil.getInstance(this).show("说个数呀！");
+            ToastUtil.showMessage("说个数呀！");
             return;
         }
         etCount.setText("");

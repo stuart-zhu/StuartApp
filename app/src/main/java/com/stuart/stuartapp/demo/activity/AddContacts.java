@@ -126,7 +126,7 @@ public class AddContacts extends BaseActivity implements View.OnClickListener{
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    ToastUtil.getInstance(this).show("不给权限就难办了！！！");
+                    ToastUtil.showMessage("不给权限就难办了！！！");
                     finish();
                 }
                 return;
@@ -257,7 +257,7 @@ public class AddContacts extends BaseActivity implements View.OnClickListener{
     }
 
     private void tos(String s) {
-        ToastUtil.getInstance(this).show(s);
+        ToastUtil.showMessage(s);
     }
 
 

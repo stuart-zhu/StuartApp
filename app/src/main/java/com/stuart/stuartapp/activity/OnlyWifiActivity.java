@@ -45,7 +45,7 @@ public class OnlyWifiActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (TextUtils.isEmpty(etWifi.getText().toString())) {
-                    ToastUtil.getInstance(OnlyWifiActivity.this).show(R.string.none_wifi_name);
+                    ToastUtil.showMessage(R.string.none_wifi_name);
                     return;
                 }
                 sp.edit().putString("wifi", etWifi.getText().toString().trim()).commit();

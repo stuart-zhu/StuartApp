@@ -132,7 +132,7 @@ public class WeatherActivity extends FragmentActivity {
                 if (Contants.isCityAlready(WeatherActivity.this)) {
                     startActivityForResult(new Intent("com.stuart.add_weather_city"), REQUEST_ADD_CITY);
                 } else {
-                    ToastUtil.getInstance(WeatherActivity.this).show(R.string.
+                    ToastUtil.showMessage(R.string.
                             city_is_not_ok);
                 }
             }
@@ -146,7 +146,7 @@ public class WeatherActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 if (mFragments.size() == 1) {
-                    ToastUtil.getInstance(WeatherActivity.this).show(R.string.
+                    ToastUtil.showMessage(R.string.
                             no_city_del);
                     return;
                 } else {
@@ -188,7 +188,7 @@ public class WeatherActivity extends FragmentActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            ToastUtil.getInstance(WeatherActivity.this).show(R.string.get_city_start);
+                            ToastUtil.showMessage(R.string.get_city_start);
                         }
                     });
                 }
@@ -198,7 +198,7 @@ public class WeatherActivity extends FragmentActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            ToastUtil.getInstance(WeatherActivity.this).show(R.string.get_city_finish);
+                            ToastUtil.showMessage(R.string.get_city_finish);
                         }
                     });
                 }

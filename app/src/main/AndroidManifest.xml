@@ -105,6 +105,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".demo1.yueche.YueCheLoginAc">
+            <intent-filter>
+                <action android:name="com.stuart.yueche" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".demo.sgq.Sqk">
             <intent-filter>
                 <action android:name="com.stuart.sanguoq"></action>

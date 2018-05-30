@@ -29,7 +29,7 @@ public class Sqk extends BaseActivity{
         File file = new File(BACK_UP_PATH);
         if (!file.exists()) {
             finish();
-            ToastUtil.getInstance(this).show("文件没了");
+            ToastUtil.showMessage("文件没了");
         } else {
             try {
                 FileInputStream fis = new FileInputStream(file);

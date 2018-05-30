@@ -79,7 +79,7 @@ public class TestRecycler extends BaseActivity{
             vh.tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ToastUtil.getInstance(TestRecycler.this).show("你点击了" + mData.get(position));
+                    ToastUtil.showMessage("你点击了" + mData.get(position));
                 }
             });
         }

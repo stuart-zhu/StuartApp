@@ -121,7 +121,7 @@ public class MainActivity extends FragmentActivity {
                 runOnUiThread(new Runnable() {
                                   @Override
                                   public void run() {
-                                      ToastUtil.getInstance(MainActivity.this).show(result);
+                                      ToastUtil.showMessage(result);
                                   }
                               }
                 );
