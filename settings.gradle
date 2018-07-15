@@ -1,2 +1,2 @@
-include ':app', ':rxandroid2'
+include ':app', ':rxandroid2', 'zxlib', ':zxlibs'
 project(':rxandroid2').projectDir = new File('rxandroid')

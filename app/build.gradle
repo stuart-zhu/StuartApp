@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.stuart.stuartapp"
@@ -55,8 +55,11 @@ dependencies {
     //    complie 'io.reactivex.rxjava2:rxjava:2.0.1'
     implementation project(':rxandroid2')
     implementation files('libs/RxAndroid.jar')
+    implementation files('libs/commons-codec-1.11.jar')
 }
 
 dependencies {
     compile project(':rxandroid2')
+    compile project(':zxlibs')
+
 }

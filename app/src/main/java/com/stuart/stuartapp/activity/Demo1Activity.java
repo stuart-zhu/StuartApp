@@ -52,6 +52,7 @@ public class Demo1Activity extends Fragment {
         list.add(R.string.baidu_map);
         list.add(R.string.emojirain);
         list.add(R.string.yue_che);
+        list.add(R.string.ss_erwm);
 
         return list;
     }
@@ -108,6 +109,9 @@ public class Demo1Activity extends Fragment {
                                 break;
                         case R.string.yue_che:
                             intent = new Intent("com.stuart.yueche");
+                            break;
+                        case R.string.ss_erwm:
+                            intent = new Intent("com.stuart.ss_erwm");
                             break;
                         default:
                             break;

@@ -1,0 +1,27 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:5:5-9:12
+INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:5:5-9:12
+INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:5:5-9:12
+INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:5:5-9:12
+INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:5:5-9:12
+INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:5:5-9:12
+INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:5:5-9:12
+	package
+		ADDED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:5:69-110
+		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml
+		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml
+	android:versionName
+		ADDED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:5:41-68
+		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml
+		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:5:111-169
+	android:versionCode
+		ADDED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:5:15-40
+		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml
+		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml
+uses-sdk
+ADDED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:7:5-43
+	android:minSdkVersion
+		ADDED from C:\Users\youyuan\StudioProjects\StuartApp\zxlibs\AndroidManifest.xml:7:15-41
