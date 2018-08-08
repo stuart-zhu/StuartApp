@@ -86,7 +86,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/stuart_name"
         android:supportsRtl="true"
         android:name=".StuartApplication"
         android:theme="@style/AppTheme">
@@ -103,12 +103,13 @@
             android:name="com.baidu.speech.SECRET_KEY"
             android:value="172a23b02564d514baa7cade4cd2b708" />
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
+        <activity android:name=".MainActivity"
+          >
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".activity.TwoColorBallActivity" />
         <activity android:name=".activity.SSQHistoryActivity" />
@@ -223,6 +224,19 @@
             <intent-filter>
                 <action android:name="com.stuart.jktk"/>
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".demo.activity.TestTask">
+            <intent-filter>
+                <action android:name="com.stuart.test_taskAffinity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

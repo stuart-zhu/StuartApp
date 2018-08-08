@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StuartApp</string>
+    <string name="stuart_name">StuartApp</string>
 
     <string name="ssq_number">第%s期</string>
 
@@ -103,4 +103,5 @@
 
     <string name="description">没有描述</string>
     <string name="ss_erwm">Ss二维码</string>
+    <string name="test_taskAffinity">测试taskAffinity</string>
 </resources>

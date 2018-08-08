@@ -56,6 +56,7 @@ public class DemoActivity extends Fragment {
         list.add(R.string.demo_test_logcat);
         list.add(R.string.news);
         list.add(R.string.jia_kao_ti_ku);
+        list.add(R.string.test_taskAffinity);
 
         return list;
     }
@@ -130,6 +131,9 @@ public class DemoActivity extends Fragment {
                             break;
                         case R.string.jia_kao_ti_ku:
                             intent = new Intent("com.stuart.jktk");
+                            break;
+                        case R.string.test_taskAffinity:
+                            intent = new Intent("com.stuart.test_taskAffinity");
                             break;
                         default:
                             break;
