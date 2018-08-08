@@ -1,29 +1,31 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml:15:1-44
-INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml:15:1-44
-INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml:15:1-44
-INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml:15:1-44
-INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml:15:1-44
-INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml:15:1-44
-INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml:15:1-44
+ADDED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml:15:1-44
+INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml:15:1-44
+INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml:15:1-44
+INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml:15:1-44
+INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml:15:1-44
+INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml:15:1-44
+INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml:15:1-44
 	package
-		ADDED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml:15:11-41
-		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml
+		ADDED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml:15:11-41
+		INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml
+		INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml
-		ADDED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml:15:1-44
-		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml
+		INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml
+		ADDED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml:15:1-44
+		INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml:15:1-44
 	android:versionCode
-		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml
-		ADDED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml:15:1-44
-		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml
+		INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml
+		ADDED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml:15:1-44
+		INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml
 uses-sdk
-INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml
-INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml
+INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml
+INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml
-		ADDED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\youyuan\StudioProjects\StuartApp\rxandroid\src\main\AndroidManifest.xml
+		INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml
+		ADDED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml
+		INJECTED from /Users/stuart/AndroidStudioProjects/StuartApp/rxandroid/src/main/AndroidManifest.xml

@@ -1,1 +1,1 @@
-[{"outputType":{"type":"AAPT_FRIENDLY_MERGED_MANIFESTS"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":105},"path":"AndroidManifest.xml","properties":{"packageId":"com.google.zxing.client.android","split":""}}]
+[{"outputType":{"type":"AAPT_FRIENDLY_MERGED_MANIFESTS"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":105,"versionName":"4.7.5","enabled":true,"outputFile":"zxlibs-debug.aar","fullName":"debug","baseName":"debug"},"path":"AndroidManifest.xml","properties":{"packageId":"com.google.zxing.client.android","split":""}}]
