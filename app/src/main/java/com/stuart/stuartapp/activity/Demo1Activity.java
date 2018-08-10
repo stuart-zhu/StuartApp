@@ -1,23 +1,15 @@
 package com.stuart.stuartapp.activity;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ListView;
 
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ContentView;
-import com.lidroid.xutils.view.annotation.ViewInject;
-import com.stuart.stuartapp.BaseActivity;
 import com.stuart.stuartapp.R;
+import com.stuart.stuartapp.entity.ItemDemo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,105 +17,36 @@ import java.util.List;
 /**
  * Created by stuart on 2017/12/12.
  */
-public class Demo1Activity extends Fragment {
+public class Demo1Activity extends BaseDemoFragment {
 
-    private ListView mListView;
+    private RecyclerView mListView;
 
-    private DemoAdapter mAdapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         View inflate = inflater.inflate(R.layout.activiy_demo, null);
-        mListView = (ListView) inflate.findViewById(R.id.lv);
-        prepareData();
+        mListView = (RecyclerView) inflate.findViewById(R.id.lv);
 
-        mAdapter = new DemoAdapter(getContext(), prepareData());
-        mListView.setAdapter(mAdapter);
+
+        mListView.setAdapter(new MyAdapter());
+        mListView.addItemDecoration(new Divider(getContext()));
+        mListView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+//        mListView.setAdapter(mAdapter);
         return inflate;
     }
 
 
+    @Override
+    protected List<ItemDemo> prepareData() {
+        List<ItemDemo> list = new ArrayList<>();
 
-    private List<Integer> prepareData() {
-        List<Integer> list = new ArrayList<>();
-
-        list.add(R.string.hao_mao);
-        list.add(R.string.baidu_map);
-        list.add(R.string.emojirain);
-        list.add(R.string.yue_che);
-        list.add(R.string.ss_erwm);
-
+        list.add(new ItemDemo(R.string.hao_mao, 1, "com.stuart.hao_ma"));
+        list.add(new ItemDemo(R.string.baidu_map, 1, "com.stuart.baidumap.main"));
+        list.add(new ItemDemo(R.string.emojirain, 1, "com.stuart.emojirain"));
+        list.add(new ItemDemo(R.string.yue_che, 1, "com.stuart.yueche"));
+        list.add(new ItemDemo(R.string.ss_erwm, 1, "com.stuart.ss_erwmz"));
         return list;
     }
-
-
-    private class DemoAdapter extends BaseAdapter {
-
-        private List<Integer> mResIds;
-
-        private LayoutInflater mInflator;
-
-        public DemoAdapter(Context context, List<Integer> list) {
-            mInflator = LayoutInflater.from(context);
-            mResIds = list;
-        }
-
-        @Override
-        public int getCount() {
-            return mResIds == null ? 0 : mResIds.size();
-        }
-
-        @Override
-        public Integer getItem(int position) {
-            return mResIds.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = mInflator.inflate(R.layout.item_button_layout, null);
-            }
-            Button bt = (Button) convertView;
-
-            bt.setText(getItem(position));
-
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = null;
-                    switch (getItem(position)) {
-                        case R.string.hao_mao:
-                            intent = new Intent("com.stuart.hao_ma");
-                            break;
-                        case R.string.baidu_map:
-                            intent = new Intent("com.stuart.baidumap.main");
-                            break;
-                        case R.string.emojirain:
-                            intent = new Intent("com.stuart.emojirain");
-                                break;
-                        case R.string.yue_che:
-                            intent = new Intent("com.stuart.yueche");
-                            break;
-                        case R.string.ss_erwm:
-                            intent = new Intent("com.stuart.ss_erwm");
-                            break;
-                        default:
-                            break;
-
-                    }
-                    if (intent != null) {
-                        startActivity(intent);
-                    }
-                }
-            });
-            return convertView;
-        }
-    }
-
 }

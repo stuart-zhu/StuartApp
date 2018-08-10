@@ -1,21 +1,15 @@
 package com.stuart.stuartapp.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-
 
 import com.stuart.stuartapp.R;
-import com.stuart.stuartapp.demo.activity.AddContacts;
-import com.stuart.stuartapp.demo.activity.SampleActivity;
+import com.stuart.stuartapp.entity.ItemDemo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,127 +18,50 @@ import java.util.List;
  * Created by stuart on 2016/12/12.
  */
 
-public class DemoActivity extends Fragment {
+public class DemoActivity extends BaseDemoFragment {
+
+  private static final String TAG = "DemoActivity";
+
+  private RecyclerView mListView;
 
 
-    private ListView mListView;
+  @Nullable
+  @Override
+  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    super.onCreateView(inflater, container, savedInstanceState);
+    View view = inflater.inflate(R.layout.activiy_demo, null);
+    mListView = (RecyclerView) view.findViewById(R.id.lv);
 
-    private DemoAdapter mAdapter;
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activiy_demo, null);
-        mListView = (ListView) view.findViewById(R.id.lv);
-        prepareData();
-
-        mAdapter = new DemoAdapter(getContext(), prepareData());
-        mListView.setAdapter(mAdapter);
-
-        return view;
-    }
+    //mAdapter = new DemoAdapter(getContext(), prepareData());
+    mListView.setAdapter(new MyAdapter());
+    mListView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    mListView.addItemDecoration(new Divider(getContext()));
 
 
-    private List<Integer> prepareData() {
-        List<Integer> list = new ArrayList<>();
-        list.add(R.string.add_contact);
-        list.add(R.string.demo_test_recycler);
-        list.add(R.string.demo_test_sample);
-        list.add(R.string.weather);
-        list.add(R.string.only_wifi);
-        list.add(R.string.demo_test_file);
-        list.add(R.string.demo_test_logcat);
-        list.add(R.string.news);
-        list.add(R.string.jia_kao_ti_ku);
-        list.add(R.string.test_taskAffinity);
-
-        return list;
-    }
+    return view;
+  }
 
 
-    private class DemoAdapter extends BaseAdapter {
 
-        private List<Integer> mResIds;
 
-        private LayoutInflater mInflator;
+  protected List<ItemDemo> prepareData() {
+    List<ItemDemo> list = new ArrayList<>();
+    list.add(new ItemDemo(R.string.add_contact, 1, "com.stuart.addContacts"));
+    list.add(new ItemDemo(R.string.demo_test_recycler, 1, "testRecycler"));
+    list.add(new ItemDemo(R.string.demo_test_sample, 1, "com.stuart.sampleAct"));
+    list.add(new ItemDemo(R.string.weather, 1, "com.stuart.weather"));
+    list.add(new ItemDemo(R.string.only_wifi, 1, "com.stuart.only_wifi"));
+    list.add(new ItemDemo(R.string.demo_test_file, 1, "com.demo.test_file"));
+    list.add(new ItemDemo(R.string.demo_test_logcat, 1, "com.stuart.logcat"));
+    list.add(new ItemDemo(R.string.news, 1, "com.stuart.news"));
+    list.add(new ItemDemo(R.string.jia_kao_ti_ku, 1, "com.stuart.jktk"));
+    list.add(new ItemDemo(R.string.test_taskAffinity, 1, "com.stuart.test_taskAffinity"));
 
-        public DemoAdapter(Context context, List<Integer> list) {
-            mInflator = LayoutInflater.from(context);
-            mResIds = list;
-        }
 
-        @Override
-        public int getCount() {
-            return mResIds == null ? 0 : mResIds.size();
-        }
+    return list;
+  }
 
-        @Override
-        public Integer getItem(int position) {
-            return mResIds.get(position);
-        }
 
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
 
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = mInflator.inflate(R.layout.item_button_layout, null);
-            }
-            Button bt = (Button) convertView;
 
-            bt.setText(getItem(position));
-
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = null;
-                    switch (getItem(position)) {
-                        case R.string.add_contact:
-                            intent = new Intent(getContext(), AddContacts.class);
-                            break;
-                        case R.string.demo_test_recycler:
-                            intent = new Intent("testRecycler");
-                            break;
-                        case R.string.demo_test_sample:
-                            intent = new Intent(getContext(), SampleActivity.class);
-                            break;
-                        case R.string.weather:
-                            intent = new Intent("com.stuart.weather");
-                            break;
-                        case R.string.only_wifi:
-                            intent = new Intent("com.stuart.only_wifi");
-                            break;
-                        case R.string.demo_test_file:
-                            intent = new Intent("com.demo.test_file");
-                            break;
-                        case R.string.demo_test_logcat:
-                            intent = new Intent("com.stuart.logcat");
-                            break;
-                        case R.string.news:
-                            intent = new Intent("com.stuart.news");
-                            break;
-                        case R.string.san_guo_q:
-                            intent = new Intent("com.stuart.sanguoq");
-                            break;
-                        case R.string.jia_kao_ti_ku:
-                            intent = new Intent("com.stuart.jktk");
-                            break;
-                        case R.string.test_taskAffinity:
-                            intent = new Intent("com.stuart.test_taskAffinity");
-                            break;
-                        default:
-                            break;
-
-                    }
-                    if (intent != null) {
-                        startActivity(intent);
-                    }
-                }
-            });
-            return convertView;
-        }
-    }
 }

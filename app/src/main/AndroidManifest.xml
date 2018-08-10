@@ -105,16 +105,22 @@
 
         <activity android:name=".MainActivity"
           >
-            <!--<intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
         <activity android:name=".activity.TwoColorBallActivity" />
         <activity android:name=".activity.SSQHistoryActivity" />
 
-        <activity android:name=".demo.activity.AddContacts"></activity>
+        <activity android:name=".demo.activity.AddContacts">
+            <intent-filter
+                >
+                <action android:name="com.stuart.addContacts"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".demo.activity.TestRecycler">
             <intent-filter>
                 <action android:name="testRecycler" />
@@ -144,7 +150,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".demo.activity.SampleActivity" />
+        <activity android:name=".demo.activity.SampleActivity" >
+            <intent-filter
+                >
+                <action android:name="com.stuart.sampleAct"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
 
         <activity android:name=".demo.activity.LogcatActivity">
             <intent-filter>
@@ -232,12 +244,12 @@
                 <action android:name="com.stuart.test_taskAffinity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
-
+<!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
 
         <activity android:name=".demo1.haoma.HaoMaActivity"

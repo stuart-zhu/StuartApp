@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <item name="my_vh_tv_id" type="id"/>
+  <item name="my_vh_bt_id" type="id"/>
+</resources>
