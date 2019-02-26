@@ -249,4 +249,11 @@
         <!-- 圆角矩形宽高相等,取较宽高中大值-->
         <attr name="mv_isWidthHeightEqual" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="TitleView">
+        <attr name="title" format="string"/>
+        <attr name="show_back" format="boolean"/>
+        <attr name="right" format="string"/>
+    </declare-styleable>
+
 </resources>

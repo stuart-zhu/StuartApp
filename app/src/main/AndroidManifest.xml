@@ -1,320 +1,367 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.stuart.stuartapp">
+<manifest
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.stuart.stuartapp"
+  >
 
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+  <uses-permission android:name="android.permission.VIBRATE"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.READ_CONTACTS"/>
+  <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+  <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+  <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+  <uses-permission android:name="android.permission.BLUETOOTH"/>
+  <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission android:name="android.permission.READ_LOGS"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+  <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
 
-    <uses-permission android:name="android.permission.GET_TASKS" />
+  <uses-permission android:name="android.permission.GET_TASKS"/>
 
-    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
+  <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
 
-    <uses-permission android:name="android.permission.CAMERA"/>
+  <uses-permission android:name="android.permission.CAMERA"/>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
 
-    <uses-permission android:name="android.permission.VIBRATE"/>
+  <uses-permission android:name="android.permission.VIBRATE"/>
 
-    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+  <uses-permission android:name="android.permission.FLASHLIGHT"/>
 
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+  <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
-    <!-- unavailable in API 23 -->
+  <!-- unavailable in API 23 -->
 
 
-    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
+  <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
 
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
-    <uses-sdk android:targetSdkVersion="22" android:minSdkVersion="15"/>
+  <uses-sdk
+    android:minSdkVersion="15"
+    android:targetSdkVersion="22"
+    />
 
-    <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+  <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
 
 
-    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+  <uses-feature
+    android:name="android.hardware.camera"
+    android:required="false"
+    />
 
-    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+  <uses-feature
+    android:name="android.hardware.camera.front"
+    android:required="false"
+    />
 
-    <!-- TODO replace above two with next line after Android 4.2 -->
+  <!-- TODO replace above two with next line after Android 4.2 -->
+
 
-
-    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
-
-
-    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
-
-    <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
-
-    <uses-feature android:name="android.hardware.screen.landscape"/>
-
-    <uses-feature android:name="android.hardware.wifi" android:required="false"/>
-
-    <!-- This excludes Google TV, which is unfortunately included by virtue of not requiring a camera -->
-
-
-    <uses-feature android:name="android.hardware.touchscreen"/>
-
-    <!-- TODO make this not required again after android.hardware.camera.any is available -->
-
-
-    <supports-screens android:anyDensity="true" android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true"/>
-
-
-
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/stuart_name"
-        android:supportsRtl="true"
-        android:name=".StuartApplication"
-        android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.baidu.speech.APP_ID"
-            android:value="9601898" />
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="ofULVPGAmxkZKfG7cEjwdtomH11qk38H" />
-        <meta-data
-            android:name="com.baidu.speech.API_KEY"
-            android:value="02qsoV3AIvYqH2hEkmLvWblE" />
-        <meta-data
-            android:name="com.baidu.speech.SECRET_KEY"
-            android:value="172a23b02564d514baa7cade4cd2b708" />
-
-        <activity android:name=".MainActivity"
-          >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.TwoColorBallActivity" />
-        <activity android:name=".activity.SSQHistoryActivity" />
-
-        <activity android:name=".demo.activity.AddContacts">
-            <intent-filter
-                >
-                <action android:name="com.stuart.addContacts"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity android:name=".demo.activity.TestRecycler">
-            <intent-filter>
-                <action android:name="testRecycler" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".demo.activity.DemoTestFileActivity">
-            <intent-filter>
-                <action android:name="com.demo.test_file" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".demo.weather.WeatherActivity">
-
-            <intent-filter>
-                <action android:name="com.stuart.weather" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".demo.weather.SelectCity">
-            <intent-filter>
-                <action android:name="com.stuart.add_weather_city" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".demo.activity.SampleActivity" >
-            <intent-filter
-                >
-                <action android:name="com.stuart.sampleAct"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".demo.activity.LogcatActivity">
-            <intent-filter>
-                <action android:name="com.stuart.logcat" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".demo.news.NewsInfo" android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="com.stuart.news.info" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".demo1.yueche.YueCheLoginAc">
-            <intent-filter>
-                <action android:name="com.stuart.yueche" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".demo.sgq.Sqk">
-            <intent-filter>
-                <action android:name="com.stuart.sanguoq"></action>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <provider
-            android:name=".db.StuartProvider"
-            android:authorities="com.stuart.stuartapp" />
-        <provider
-            android:name=".demo.weather.db.WeatherProvider"
-            android:authorities="com.stuart.stuartapp.weather" />
-
-        <activity android:name=".boy.MyBoy">
-            <intent-filter>
-                <action android:name="com.stuart.boy" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activity.KotlinActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-            <!--   -->
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-                <action android:name="kotlin"></action>
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".kotlin.PullActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="com.stuart.pull.kotlin" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".activity.OnlyWifiActivity">
-            <intent-filter>
-                <action android:name="com.stuart.only_wifi"></action>
-                <category android:name="android.intent.category.DEFAULT" />
-
-            </intent-filter>
-
-
-        </activity>
-
-        <activity android:name=".demo.jktk.JKTKActivity"
-            >
-            <intent-filter>
-                <action android:name="com.stuart.jktk"/>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".demo.activity.TestTask">
-            <intent-filter>
-                <action android:name="com.stuart.test_taskAffinity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-<!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-
-        <activity android:name=".demo1.haoma.HaoMaActivity"
-            >
-            <intent-filter>
-                <action android:name="com.stuart.hao_ma"/>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".demo.news.NewsActivity">
-            <intent-filter>
-                <action android:name="com.stuart.news" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".demo1.baidumap.BaiduMapActivity"
-            >
-            <intent-filter>
-                <action android:name="com.stuart.baidumap.main"/>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".demo1.emojirain.EmojiRainActivity">
-            <intent-filter>
-                <action android:name="com.stuart.emojirain"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".demo1.ss.SSMainA">
-            <intent-filter>
-                <action android:name="com.stuart.ss_erwm"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
-        <service android:name=".service.StuartLogService">
-            <intent-filter>
-                <action android:name="com.stuart.service.log" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </service>
-
-        <service android:name=".service.FileLogService" />
-
-
-        <service android:name=".service.MyAccessibility"
-            android:enabled="true"
-            android:exported="true"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
-            <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService"/>
-            </intent-filter>
-
-            <meta-data
-                android:name="android.accessibilityservice"
-                android:resource="@xml/accessibility"/>
-
-        </service>
-
-
-
-        <activity android:name="com.google.zxing.client.android.CaptureActivity" android:windowSoftInputMode="stateAlwaysHidden" android:theme="@style/CaptureTheme" android:stateNotNeeded="true" android:clearTaskOnLaunch="true" android:screenOrientation="portrait">
+  <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+
+
+  <uses-feature
+    android:name="android.hardware.camera.autofocus"
+    android:required="false"
+    />
+
+  <uses-feature
+    android:name="android.hardware.camera.flash"
+    android:required="false"
+    />
+
+  <uses-feature android:name="android.hardware.screen.landscape"/>
+
+  <uses-feature
+    android:name="android.hardware.wifi"
+    android:required="false"
+    />
+
+  <!-- This excludes Google TV, which is unfortunately included by virtue of not requiring a camera -->
+
+
+  <uses-feature android:name="android.hardware.touchscreen"/>
+
+  <!-- TODO make this not required again after android.hardware.camera.any is available -->
+
+
+  <supports-screens
+    android:anyDensity="true"
+    android:largeScreens="true"
+    android:normalScreens="true"
+    android:smallScreens="true"
+    android:xlargeScreens="true"
+    />
+
+
+  <application
+    android:name=".StuartApplication"
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/stuart_name"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme"
+    >
+    <meta-data
+      android:name="com.baidu.speech.APP_ID"
+      android:value="9601898"
+      />
+    <meta-data
+      android:name="com.baidu.lbsapi.API_KEY"
+      android:value="ofULVPGAmxkZKfG7cEjwdtomH11qk38H"
+      />
+    <meta-data
+      android:name="com.baidu.speech.API_KEY"
+      android:value="02qsoV3AIvYqH2hEkmLvWblE"
+      />
+    <meta-data
+      android:name="com.baidu.speech.SECRET_KEY"
+      android:value="172a23b02564d514baa7cade4cd2b708"
+      />
+
+    <activity android:name=".MainActivity"
+      >
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity android:name=".activity.TwoColorBallActivity"/>
+    <activity android:name=".activity.SSQHistoryActivity"/>
+
+    <activity android:name=".demo.activity.AddContacts">
+      <intent-filter
+        >
+        <action android:name="com.stuart.addContacts"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+    <activity android:name=".demo.activity.TestRecycler">
+      <intent-filter>
+        <action android:name="testRecycler"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".demo.activity.DemoTestFileActivity">
+      <intent-filter>
+        <action android:name="com.demo.test_file"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+    <activity android:name=".demo.weather.WeatherActivity">
+
+      <intent-filter>
+        <action android:name="com.stuart.weather"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+    <activity android:name=".demo.weather.SelectCity">
+      <intent-filter>
+        <action android:name="com.stuart.add_weather_city"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+    <activity android:name=".demo.activity.SampleActivity">
+      <intent-filter
+        >
+        <action android:name="com.stuart.sampleAct"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".demo.activity.LogcatActivity">
+      <intent-filter>
+        <action android:name="com.stuart.logcat"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity
+      android:name=".demo.news.NewsInfo"
+      android:theme="@style/Theme.AppCompat.NoActionBar"
+      >
+      <intent-filter>
+        <action android:name="com.stuart.news.info"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".demo1.yueche.YueCheLoginAc">
+      <intent-filter>
+        <action android:name="com.stuart.yueche"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".demo.sgq.Sqk">
+      <intent-filter>
+        <action android:name="com.stuart.sanguoq"></action>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <provider
+      android:name=".db.StuartProvider"
+      android:authorities="com.stuart.stuartapp"
+      />
+    <provider
+      android:name=".demo.weather.db.WeatherProvider"
+      android:authorities="com.stuart.stuartapp.weather"
+      />
+
+    <activity android:name=".boy.MyBoy">
+      <intent-filter>
+        <action android:name="com.stuart.boy"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:name=".activity.KotlinActivity"
+      android:label="@string/app_name"
+      android:theme="@style/AppTheme.NoActionBar"
+      >
+      <!--   -->
+      <intent-filter>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <action android:name="kotlin"></action>
+      </intent-filter>
+    </activity>
+
+    <activity
+      android:name=".kotlin.PullActivity"
+      android:theme="@style/AppTheme.NoActionBar"
+      >
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <action android:name="com.stuart.pull.kotlin"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.OnlyWifiActivity">
+      <intent-filter>
+        <action android:name="com.stuart.only_wifi"></action>
+        <category android:name="android.intent.category.DEFAULT"/>
+
+      </intent-filter>
+
+
+    </activity>
+
+    <activity android:name=".demo.jktk.JKTKActivity"
+      >
+      <intent-filter>
+        <action android:name="com.stuart.jktk"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".demo.activity.TestTask">
+      <intent-filter>
+        <action android:name="com.stuart.test_taskAffinity"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+      <!--
+                  <intent-filter>
+                      <action android:name="android.intent.action.MAIN" />
+
+                      <category android:name="android.intent.category.LAUNCHER" />
+                  </intent-filter>-->
+    </activity>
+
+    <activity android:name=".demo1.haoma.HaoMaActivity"
+      >
+      <intent-filter>
+        <action android:name="com.stuart.hao_ma"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+    <activity android:name=".demo.news.NewsActivity">
+      <intent-filter>
+        <action android:name="com.stuart.news"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".demo1.baidumap.BaiduMapActivity"
+      >
+      <intent-filter>
+        <action android:name="com.stuart.baidumap.main"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".demo1.emojirain.EmojiRainActivity">
+      <intent-filter>
+        <action android:name="com.stuart.emojirain"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".demo1.ss.SSMainA">
+      <intent-filter>
+        <action android:name="com.stuart.ss_erwm"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <service android:name=".service.StuartLogService">
+      <intent-filter>
+        <action android:name="com.stuart.service.log"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </service>
+
+    <service android:name=".service.FileLogService"/>
+
+
+    <service
+      android:name=".service.MyAccessibility"
+      android:enabled="true"
+      android:exported="true"
+      android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+      >
+      <intent-filter>
+        <action android:name="android.accessibilityservice.AccessibilityService"/>
+      </intent-filter>
+
+      <meta-data
+        android:name="android.accessibilityservice"
+        android:resource="@xml/accessibility"
+        />
+
+    </service>
+
+
+    <activity
+      android:name="com.google.zxing.client.android.CaptureActivity"
+      android:clearTaskOnLaunch="true"
+      android:screenOrientation="portrait"
+      android:stateNotNeeded="true"
+      android:theme="@style/CaptureTheme"
+      android:windowSoftInputMode="stateAlwaysHidden"
+      >
 
 
       <!--  <intent-filter>
@@ -326,35 +373,18 @@
     </intent-filter>-->
 
 
-        <intent-filter>
+      <intent-filter>
 
         <action android:name="com.google.zxing.client.android.SCAN"/>
 
         <category android:name="android.intent.category.DEFAULT"/>
 
-    </intent-filter>
+      </intent-filter>
 
-        <!-- Allow web apps to launch Barcode Scanner by linking to http://zxing.appspot.com/scan. -->
-
-
-
-        <intent-filter>
-
-        <action android:name="android.intent.action.VIEW"/>
-
-        <category android:name="android.intent.category.DEFAULT"/>
-
-        <category android:name="android.intent.category.BROWSABLE"/>
-
-        <data android:path="/scan" android:host="zxing.appspot.com" android:scheme="http"/>
-
-    </intent-filter>
-
-        <!-- We also support a Google Product Search URL. -->
+      <!-- Allow web apps to launch Barcode Scanner by linking to http://zxing.appspot.com/scan. -->
 
 
-
-        <intent-filter>
+      <intent-filter>
 
         <action android:name="android.intent.action.VIEW"/>
 
@@ -362,31 +392,18 @@
 
         <category android:name="android.intent.category.BROWSABLE"/>
 
-        <data android:path="/m/products/scan" android:host="www.google.com" android:scheme="http"/>
+        <data
+          android:host="zxing.appspot.com"
+          android:path="/scan"
+          android:scheme="http"
+          />
 
-    </intent-filter>
+      </intent-filter>
 
-        <!-- And the UK version. -->
-
-
-
-        <intent-filter>
-
-        <action android:name="android.intent.action.VIEW"/>
-
-        <category android:name="android.intent.category.DEFAULT"/>
-
-        <category android:name="android.intent.category.BROWSABLE"/>
-
-        <data android:path="/m/products/scan" android:host="www.google.co.uk" android:scheme="http"/>
-
-    </intent-filter>
-
-        <!-- Support zxing://scan/?... like iPhone app -->
+      <!-- We also support a Google Product Search URL. -->
 
 
-
-        <intent-filter>
+      <intent-filter>
 
         <action android:name="android.intent.action.VIEW"/>
 
@@ -394,31 +411,79 @@
 
         <category android:name="android.intent.category.BROWSABLE"/>
 
-        <data android:path="/" android:host="scan" android:scheme="zxing"/>
+        <data
+          android:host="www.google.com"
+          android:path="/m/products/scan"
+          android:scheme="http"
+          />
 
-    </intent-filter>
+      </intent-filter>
+
+      <!-- And the UK version. -->
+
+
+      <intent-filter>
+
+        <action android:name="android.intent.action.VIEW"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+
+        <category android:name="android.intent.category.BROWSABLE"/>
+
+        <data
+          android:host="www.google.co.uk"
+          android:path="/m/products/scan"
+          android:scheme="http"
+          />
+
+      </intent-filter>
+
+      <!-- Support zxing://scan/?... like iPhone app -->
+
+
+      <intent-filter>
+
+        <action android:name="android.intent.action.VIEW"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+
+        <category android:name="android.intent.category.BROWSABLE"/>
+
+        <data
+          android:host="scan"
+          android:path="/"
+          android:scheme="zxing"
+          />
+
+      </intent-filter>
 
     </activity>
 
-        <activity android:name="com.google.zxing.client.android.PreferencesActivity" android:label="@string/preferences_name" android:stateNotNeeded="true"/>
+    <activity
+      android:name="com.google.zxing.client.android.PreferencesActivity"
+      android:label="@string/preferences_name"
+      android:stateNotNeeded="true"
+      />
 
 
-        <activity android:name="com.google.zxing.client.android.encode.EncodeActivity" android:stateNotNeeded="true">
+    <activity
+      android:name="com.google.zxing.client.android.encode.EncodeActivity"
+      android:stateNotNeeded="true"
+      >
 
 
-        <intent-filter>
+      <intent-filter>
 
         <action android:name="com.google.zxing.client.android.ENCODE"/>
 
         <category android:name="android.intent.category.DEFAULT"/>
 
-    </intent-filter>
+      </intent-filter>
 
-        <!-- This allows us to handle the Share button in Contacts. -->
+      <!-- This allows us to handle the Share button in Contacts. -->
 
 
-
-        <intent-filter>
+      <intent-filter>
 
         <action android:name="android.intent.action.SEND"/>
 
@@ -426,13 +491,12 @@
 
         <data android:mimeType="text/x-vcard"/>
 
-    </intent-filter>
+      </intent-filter>
 
-        <!-- This allows us to handle sharing any plain text . -->
+      <!-- This allows us to handle sharing any plain text . -->
 
 
-
-        <intent-filter>
+      <intent-filter>
 
         <action android:name="android.intent.action.SEND"/>
 
@@ -440,49 +504,98 @@
 
         <data android:mimeType="text/plain"/>
 
-    </intent-filter>
+      </intent-filter>
 
     </activity>
 
 
-        <activity android:name="com.google.zxing.client.android.book.SearchBookContentsActivity" android:label="@string/sbc_name" android:stateNotNeeded="true" android:screenOrientation="sensorLandscape">
+    <activity
+      android:name="com.google.zxing.client.android.book.SearchBookContentsActivity"
+      android:label="@string/sbc_name"
+      android:screenOrientation="sensorLandscape"
+      android:stateNotNeeded="true"
+      >
 
 
-        <intent-filter>
+      <intent-filter>
 
         <action android:name="com.google.zxing.client.android.SEARCH_BOOK_CONTENTS"/>
 
         <category android:name="android.intent.category.DEFAULT"/>
 
-    </intent-filter>
+      </intent-filter>
 
     </activity>
 
 
-        <activity android:name="com.google.zxing.client.android.share.ShareActivity" android:stateNotNeeded="true" android:screenOrientation="user">
+    <activity
+      android:name="com.google.zxing.client.android.share.ShareActivity"
+      android:screenOrientation="user"
+      android:stateNotNeeded="true"
+      >
 
 
-        <intent-filter>
+      <intent-filter>
 
         <action android:name="com.google.zxing.client.android.SHARE"/>
 
         <category android:name="android.intent.category.DEFAULT"/>
 
-    </intent-filter>
+      </intent-filter>
 
     </activity>
 
-        <activity android:name="com.google.zxing.client.android.history.HistoryActivity" android:label="@string/history_title" android:stateNotNeeded="true"/>
+    <activity
+      android:name="com.google.zxing.client.android.history.HistoryActivity"
+      android:label="@string/history_title"
+      android:stateNotNeeded="true"
+      />
 
-        <activity android:name="com.google.zxing.client.android.share.BookmarkPickerActivity" android:label="@string/bookmark_picker_name" android:stateNotNeeded="true"/>
+    <activity
+      android:name="com.google.zxing.client.android.share.BookmarkPickerActivity"
+      android:label="@string/bookmark_picker_name"
+      android:stateNotNeeded="true"
+      />
 
-        <activity android:name="com.google.zxing.client.android.share.AppPickerActivity" android:label="@string/app_picker_name" android:stateNotNeeded="true"/>
+    <activity
+      android:name="com.google.zxing.client.android.share.AppPickerActivity"
+      android:label="@string/app_picker_name"
+      android:stateNotNeeded="true"
+      />
 
-        <activity android:name="com.google.zxing.client.android.HelpActivity" android:label="@string/menu_help" android:stateNotNeeded="true" android:screenOrientation="user"/>
+    <activity
+      android:name="com.google.zxing.client.android.HelpActivity"
+      android:label="@string/menu_help"
+      android:screenOrientation="user"
+      android:stateNotNeeded="true"
+      />
 
 
+    <activity android:name="com.stuart.stuartapp.demo.btc.BtcPriceActivity">
+
+      <intent-filter>
+        <action android:name="com.stuart.getbtc"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".demo1.fileconnect.FileConnectActivity">
+
+      <intent-filter>
+        <action android:name="com.stuart.connect_file"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
 
 
-    </application>
+    <receiver android:name="com.stuart.stuartapp.demo.btc.widget.BtcWidget">
+      <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+      </intent-filter>
+      <meta-data
+        android:name="android.appwidget.provider"
+        android:resource="@xml/btc_widget" />
+    </receiver>
+  </application>
 
 </manifest>

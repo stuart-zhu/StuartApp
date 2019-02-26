@@ -47,6 +47,7 @@ public class Demo1Activity extends BaseDemoFragment {
         list.add(new ItemDemo(R.string.emojirain, 1, "com.stuart.emojirain"));
         list.add(new ItemDemo(R.string.yue_che, 1, "com.stuart.yueche"));
         list.add(new ItemDemo(R.string.ss_erwm, 1, "com.stuart.ss_erwmz"));
+        list.add(new ItemDemo(R.string.connect_file, 1, "com.stuart.connect_file"));
         return list;
     }
 }

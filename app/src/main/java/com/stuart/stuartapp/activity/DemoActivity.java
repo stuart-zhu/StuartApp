@@ -56,6 +56,7 @@ public class DemoActivity extends BaseDemoFragment {
     list.add(new ItemDemo(R.string.news, 1, "com.stuart.news"));
     list.add(new ItemDemo(R.string.jia_kao_ti_ku, 1, "com.stuart.jktk"));
     list.add(new ItemDemo(R.string.test_taskAffinity, 1, "com.stuart.test_taskAffinity"));
+    list.add(new ItemDemo(R.string.get_btc, 1,"com.stuart.getbtc"));
 
 
     return list;

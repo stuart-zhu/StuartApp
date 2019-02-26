@@ -35,7 +35,7 @@ class MainKotlinAdapter(private val context: Context, private val list: Array<St
 
         init {
 
-            tvName = v.findViewById(R.id.tvName) as TextView
+            tvName = v.findViewById(R.id.tvName)
         }
     }
 }

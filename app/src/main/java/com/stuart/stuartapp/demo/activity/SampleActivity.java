@@ -57,6 +57,8 @@ public class SampleActivity extends BaseActivity {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED
+        );
         mDrawerToggle.syncState();
 
 
@@ -137,6 +139,15 @@ public class SampleActivity extends BaseActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
+            mDrawerLayout.closeDrawer(mDrawerList);
+        } else mDrawerLayout.openDrawer(mDrawerList);
+//        return true;
+//        super.onBackPressed();
     }
 
     @Override

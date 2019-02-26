@@ -10,8 +10,8 @@ buildscript {
 apply plugin: 'com.android.library'
 
 dependencies {
-    implementation fileTree(include: '*.jar', dir: 'libs')
-    implementation files('libs/core-3.2.1.jar')
+  implementation fileTree(include: '*.jar', dir: 'libs')
+  implementation files('libs/core-3.2.1.jar')
 }
 
 android {
