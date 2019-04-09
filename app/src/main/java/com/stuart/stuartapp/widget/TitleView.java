@@ -39,7 +39,7 @@ public class TitleView extends RelativeLayout {
     typedArray.recycle();
     if (!TextUtils.isEmpty(t))
     title.setText(t);
-    back.setVisibility(showBack ? View.GONE: View.VISIBLE);
+    back.setVisibility(showBack ? View.VISIBLE: View.GONE);
     if (!TextUtils.isEmpty(r)) right.setText(r);
 //    back.setOnClickListener(v -> {if (getContext() instanceof Activity) ((Activity) getContext()).finish();});
 

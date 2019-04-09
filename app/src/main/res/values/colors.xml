@@ -4,7 +4,6 @@
     <color name="colorPrimaryDark">#98A</color><!--d2de96-->
     <color name="colorAccent">#988</color>
     <color name="white">#fff</color>
-    <!--<color name="colorAccent">#CBD</color>-->
     <color name="ldrawer_color">#ffffff</color>
     <color name="drawer_arrow_second_color">#303f9f</color>
 </resources>

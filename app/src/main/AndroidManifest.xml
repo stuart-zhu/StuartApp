@@ -150,6 +150,8 @@
         <action android:name="com.stuart.addContacts"/>
         <category android:name="android.intent.category.DEFAULT"/>
       </intent-filter>
+
+
     </activity>
     <activity android:name=".demo.activity.TestRecycler">
       <intent-filter>
@@ -238,7 +240,7 @@
     <activity
       android:name=".activity.KotlinActivity"
       android:label="@string/app_name"
-      android:theme="@style/AppTheme.NoActionBar"
+
       >
       <!--   -->
       <intent-filter>
@@ -249,7 +251,7 @@
 
     <activity
       android:name=".kotlin.PullActivity"
-      android:theme="@style/AppTheme.NoActionBar"
+
       >
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -579,7 +581,8 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".demo1.fileconnect.FileConnectActivity">
+    <activity android:name=".demo1.fileconnect.FileConnectActivity"
+      >
 
       <intent-filter>
         <action android:name="com.stuart.connect_file"/>
